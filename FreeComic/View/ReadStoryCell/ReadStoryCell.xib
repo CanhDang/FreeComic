@@ -1,19 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ReadStoryCell" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ReadStoryCell" customModule="FreeComic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="214" height="154"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                <rect key="frame" x="0.0" y="0.0" width="214" height="154"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MsH-cg-jyM">
+                        <rect key="frame" x="0.0" y="0.0" width="214" height="154"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ukx-XD-RRZ">
+                                <rect key="frame" x="0.0" y="0.0" width="214" height="154"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="ukx-XD-RRZ" firstAttribute="top" secondItem="MsH-cg-jyM" secondAttribute="top" id="4eW-VM-zBg"/>
+                            <constraint firstItem="ukx-XD-RRZ" firstAttribute="leading" secondItem="MsH-cg-jyM" secondAttribute="leading" id="N5f-wU-0bx"/>
+                            <constraint firstAttribute="trailing" secondItem="ukx-XD-RRZ" secondAttribute="trailing" id="ZZm-vz-jdX"/>
+                            <constraint firstAttribute="bottom" secondItem="ukx-XD-RRZ" secondAttribute="bottom" id="i9v-qS-ROG"/>
+                        </constraints>
+                    </scrollView>
+                </subviews>
             </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="MsH-cg-jyM" secondAttribute="bottom" id="5HK-GD-X3g"/>
+                <constraint firstAttribute="trailing" secondItem="MsH-cg-jyM" secondAttribute="trailing" id="Dpz-CE-UBp"/>
+                <constraint firstItem="MsH-cg-jyM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Fap-We-in9"/>
+                <constraint firstItem="ukx-XD-RRZ" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="UdD-6e-Ftr"/>
+                <constraint firstItem="MsH-cg-jyM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="UuC-Yx-NOH"/>
+                <constraint firstItem="ukx-XD-RRZ" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" id="sza-C2-BfY"/>
+            </constraints>
+            <size key="customSize" width="214" height="154"/>
+            <connections>
+                <outlet property="imageView" destination="ukx-XD-RRZ" id="4aR-hg-JGn"/>
+                <outlet property="scrollView" destination="MsH-cg-jyM" id="vv2-kS-lcU"/>
+            </connections>
+            <point key="canvasLocation" x="112" y="108"/>
         </collectionViewCell>
     </objects>
 </document>

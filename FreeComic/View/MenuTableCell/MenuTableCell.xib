@@ -15,19 +15,19 @@
                 <frame key="frameInset" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WnT-qh-qjZ">
-                        <constraints>
-                            <constraint firstAttribute="height" constant="40" id="4RG-lZ-4Eo"/>
-                            <constraint firstAttribute="width" constant="40" id="lRJ-bG-QBu"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ds-7g-Kux">
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WnT-qh-qjZ">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="4RG-lZ-4Eo"/>
+                            <constraint firstAttribute="width" constant="30" id="lRJ-bG-QBu"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
-                <color key="backgroundColor" red="0.14509803921568629" green="0.13725490196078433" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="7Ds-7g-Kux" firstAttribute="leading" secondItem="WnT-qh-qjZ" secondAttribute="trailing" constant="8" id="5Fu-XX-Tgg"/>
                     <constraint firstItem="7Ds-7g-Kux" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="GAU-0E-Tl4"/>
@@ -35,6 +35,7 @@
                     <constraint firstItem="WnT-qh-qjZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="kBA-Y1-fY4"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="logo" destination="WnT-qh-qjZ" id="zUK-uH-TY5"/>
                 <outlet property="title" destination="7Ds-7g-Kux" id="iov-hY-r31"/>

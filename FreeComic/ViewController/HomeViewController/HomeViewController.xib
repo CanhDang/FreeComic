@@ -1,20 +1,90 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="FreeComic" customModuleProvider="target">
             <connections>
+                <outlet property="homeTableView" destination="Sln-I0-3Wl" id="RaJ-eW-rCZ"/>
+                <outlet property="searchBar" destination="yWe-a6-W1g" id="hwL-Mg-aMS"/>
+                <outlet property="segmentedControl" destination="qJY-bW-r2L" id="vZU-Rn-hGp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tU7-GN-bN0">
+                    <color key="backgroundColor" red="0.29019607843137257" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sln-I0-3Wl">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EsM-RY-D6U">
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUB-AZ-RIS">
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="NmD-4s-oHR"/>
+                                <constraint firstAttribute="height" constant="30" id="jc2-tD-lHY"/>
+                            </constraints>
+                            <state key="normal" image="icon_menu"/>
+                            <connections>
+                                <action selector="actionOpenMenu:" destination="-1" eventType="touchUpInside" id="h56-rJ-gf2"/>
+                            </connections>
+                        </button>
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qJY-bW-r2L">
+                            <segments>
+                                <segment title="All"/>
+                                <segment title="Top"/>
+                                <segment title="New"/>
+                            </segments>
+                            <color key="tintColor" red="0.29019607843137152" green="0.93967966590998808" blue="0.96668034034083439" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="actionSegment:" destination="-1" eventType="valueChanged" id="AAF-qz-uNa"/>
+                            </connections>
+                        </segmentedControl>
+                        <searchBar contentMode="redraw" searchBarStyle="prominent" translatesAutoresizingMaskIntoConstraints="NO" id="yWe-a6-W1g">
+                            <color key="barTintColor" red="0.29019607843137257" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                    </subviews>
+                    <color key="backgroundColor" red="0.29019607843137252" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="85" id="EtM-bQ-JOg"/>
+                        <constraint firstItem="qJY-bW-r2L" firstAttribute="centerX" secondItem="EsM-RY-D6U" secondAttribute="centerX" id="Fze-O2-lLR"/>
+                        <constraint firstAttribute="trailing" secondItem="yWe-a6-W1g" secondAttribute="trailing" id="Klh-hj-5Nz"/>
+                        <constraint firstAttribute="bottom" secondItem="yWe-a6-W1g" secondAttribute="bottom" id="bRk-xo-bxe"/>
+                        <constraint firstItem="bUB-AZ-RIS" firstAttribute="leading" secondItem="EsM-RY-D6U" secondAttribute="leading" constant="8" id="c9d-10-wPd"/>
+                        <constraint firstItem="qJY-bW-r2L" firstAttribute="top" secondItem="EsM-RY-D6U" secondAttribute="top" constant="8" id="dw6-73-CQs"/>
+                        <constraint firstItem="yWe-a6-W1g" firstAttribute="leading" secondItem="EsM-RY-D6U" secondAttribute="leading" id="gyG-eN-gNb"/>
+                        <constraint firstItem="bUB-AZ-RIS" firstAttribute="top" secondItem="EsM-RY-D6U" secondAttribute="top" constant="8" id="v2s-YB-wcT"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+            <constraints>
+                <constraint firstItem="tU7-GN-bN0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="23R-Hv-m9F"/>
+                <constraint firstItem="EsM-RY-D6U" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4bH-L4-r7i"/>
+                <constraint firstItem="EsM-RY-D6U" firstAttribute="top" secondItem="tU7-GN-bN0" secondAttribute="bottom" id="9P0-nY-tqF"/>
+                <constraint firstItem="tU7-GN-bN0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="E10-oa-qN5"/>
+                <constraint firstItem="Sln-I0-3Wl" firstAttribute="top" secondItem="EsM-RY-D6U" secondAttribute="bottom" id="XuX-jd-WRy"/>
+                <constraint firstItem="Sln-I0-3Wl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ctY-xI-YJw"/>
+                <constraint firstAttribute="trailing" secondItem="EsM-RY-D6U" secondAttribute="trailing" id="eJc-4I-Yep"/>
+                <constraint firstItem="EsM-RY-D6U" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="esN-Ef-tfe"/>
+                <constraint firstAttribute="trailing" secondItem="tU7-GN-bN0" secondAttribute="trailing" id="oRc-8q-jHR"/>
+                <constraint firstAttribute="bottom" secondItem="Sln-I0-3Wl" secondAttribute="bottom" id="zjg-fw-uft"/>
+                <constraint firstAttribute="trailing" secondItem="Sln-I0-3Wl" secondAttribute="trailing" id="zsH-qg-9eO"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+            <point key="canvasLocation" x="17" y="48"/>
         </view>
     </objects>
+    <resources>
+        <image name="icon_menu" width="100" height="100"/>
+    </resources>
 </document>

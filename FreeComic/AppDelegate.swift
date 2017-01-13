@@ -15,7 +15,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let vc = HomeViewController()
+        let menu = MenuViewController()
+        let main = SWRevealViewController(rearViewController: menu, frontViewController: vc)
+        main?.rearViewRevealWidth = UIScreen.main.bounds.width / 2
+        
+        if let window = self.window {
+            let nav = UINavigationController(rootViewController: main!)
+            window.rootViewController = nav
+            nav.isNavigationBarHidden = true
+            window.makeKeyAndVisible()
+            
+        }
+
+        
         return true
     }
 

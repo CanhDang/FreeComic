@@ -1,19 +1,83 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="HomeTableViewCell" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="KGk-i7-Jjw" customClass="HomeTableViewCell" customModule="FreeComic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="345" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="345" height="70"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="a4s-Xu-d60">
+                        <rect key="frame" x="8" y="2.5" width="55" height="65"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="55" id="BTL-fs-YAc"/>
+                            <constraint firstAttribute="height" constant="65" id="GbJ-3J-U1C"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="98I-Dd-w2p">
+                        <rect key="frame" x="71" y="8" width="274" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8z-1I-voR">
+                        <rect key="frame" x="71" y="33" width="28.5" height="13.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTA-Sc-MMf">
+                        <rect key="frame" x="71" y="50.5" width="28.5" height="13.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MoreBlue" translatesAutoresizingMaskIntoConstraints="NO" id="UW4-Ut-urC">
+                        <rect key="frame" x="292" y="22.5" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="LP2-tn-a55"/>
+                            <constraint firstAttribute="width" constant="25" id="hYd-wO-KFk"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="98I-Dd-w2p" firstAttribute="leading" secondItem="a4s-Xu-d60" secondAttribute="trailing" constant="8" id="3Qy-aG-UQe"/>
+                    <constraint firstItem="a4s-Xu-d60" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="H6j-Tw-SvP"/>
+                    <constraint firstItem="Y8z-1I-voR" firstAttribute="leading" secondItem="a4s-Xu-d60" secondAttribute="trailing" constant="8" id="Hs4-66-9J0"/>
+                    <constraint firstItem="98I-Dd-w2p" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="LP7-gY-rSd"/>
+                    <constraint firstItem="a4s-Xu-d60" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="QAP-VZ-cQX"/>
+                    <constraint firstItem="98I-Dd-w2p" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="8" id="XbK-Nd-Yk1"/>
+                    <constraint firstItem="UW4-Ut-urC" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="fFB-2f-0t7"/>
+                    <constraint firstItem="Y8z-1I-voR" firstAttribute="top" secondItem="98I-Dd-w2p" secondAttribute="bottom" constant="8" id="fXv-5R-xkH"/>
+                    <constraint firstItem="98I-Dd-w2p" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="8" id="hQp-Oh-b4n"/>
+                    <constraint firstItem="UW4-Ut-urC" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-20" id="kIp-hy-wvp"/>
+                    <constraint firstItem="TTA-Sc-MMf" firstAttribute="top" secondItem="Y8z-1I-voR" secondAttribute="bottom" constant="4" id="noH-XG-69H"/>
+                    <constraint firstItem="TTA-Sc-MMf" firstAttribute="leading" secondItem="a4s-Xu-d60" secondAttribute="trailing" constant="8" id="wfL-U7-egp"/>
+                </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="labelAuthor" destination="Y8z-1I-voR" id="wda-Kn-Z85"/>
+                <outlet property="labelName" destination="98I-Dd-w2p" id="SHb-ef-jsT"/>
+                <outlet property="labelNumberChapter" destination="TTA-Sc-MMf" id="gpS-DN-IkL"/>
+                <outlet property="thumbnail" destination="a4s-Xu-d60" id="GYw-dL-PkA"/>
+            </connections>
+            <point key="canvasLocation" x="45.5" y="87"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="MoreBlue" width="50" height="50"/>
+        <image name="no_thumbnail" width="75" height="75"/>
+    </resources>
 </document>
