@@ -30,11 +30,17 @@ class DetailStoryViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
+    @IBOutlet weak var textViewHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var textViewDescription: UITextView!
+    
     var tapOutSearchBar: UIGestureRecognizer!
     
     var story: Story!
     var detailStory: DetailStory!
     var chapters = [Chapter]()
+    
+    var isShowingDesciption: Bool = false
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -60,7 +66,12 @@ class DetailStoryViewController: UIViewController {
         requestLink()
     }
     
+    
     func requestLink() {
+        
+        let loading = MBProgressHUD.showAdded(to: self.view, animated: true)
+        loading.mode = .indeterminate
+        loading.label.text = "Loading"
         
         let linkString = String(format: Constant.Request.requestDetailStory, self.story.id)
         print(linkString)
@@ -68,7 +79,12 @@ class DetailStoryViewController: UIViewController {
             if detailStory != nil {
                 self.detailStory = detailStory
                 self.chapters = (detailStory?.chapters)!
-                self.detailTableView.reloadData()
+                
+                self.textViewDescription.text = detailStory?.summary
+                DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    self.detailTableView.reloadData()
+                }
             }
         }
     }
@@ -125,6 +141,41 @@ class DetailStoryViewController: UIViewController {
         searchBar.resignFirstResponder()
         searchBar.text = nil
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if isShowingDesciption {
+            self.textViewHeightConstraint.constant = self.viewSearch.frame.height + self.detailTableView.frame.height / 2
+        }
+    }
+    
+    @IBAction func actionShowDescription(_ sender: Any) {
+        
+        self.buttonShowDescription.isEnabled = false
+        
+        if isShowingDesciption {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.buttonShowDescription.setImage(UIImage(named: "Show"), for: .normal)
+                self.textViewHeightConstraint.constant = 0
+                self.view.layoutSubviews()
+                
+            }, completion: { (completed) in
+                self.isShowingDesciption = false
+                self.buttonShowDescription.isEnabled = true
+            })
+        } else {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.buttonShowDescription.setImage(UIImage(named: "Dismiss"), for: .normal)
+                self.textViewHeightConstraint.constant = self.viewSearch.frame.height + self.detailTableView.frame.height / 2
+                self.view.layoutSubviews()
+            }, completion: { (completed) in
+                self.isShowingDesciption = true
+                self.buttonShowDescription.isEnabled = true 
+            })
+        }
+    }
+    
 }
 
 extension DetailStoryViewController: UITableViewDelegate, UITableViewDataSource {

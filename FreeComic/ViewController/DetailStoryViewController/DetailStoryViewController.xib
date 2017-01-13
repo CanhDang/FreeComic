@@ -20,6 +20,8 @@
                 <outlet property="labelNumberOfChapters" destination="vbU-EC-tAh" id="0Ex-A8-WYQ"/>
                 <outlet property="labelTitle" destination="fW2-9F-Wyt" id="8Pq-uJ-Kpa"/>
                 <outlet property="searchBar" destination="p7o-qS-Ggi" id="eNt-uT-g8f"/>
+                <outlet property="textViewDescription" destination="HPb-ot-Zgt" id="350-KU-vjO"/>
+                <outlet property="textViewHeightConstraint" destination="Mnw-Nk-VHQ" id="frn-GS-vGF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewSearch" destination="JbT-dD-ICH" id="b7A-Hu-eHC"/>
             </connections>
@@ -33,7 +35,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fW2-9F-Wyt">
-                            <rect key="frame" x="139" y="25" width="42" height="20.5"/>
+                            <rect key="frame" x="139" y="25" width="42" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -103,6 +105,9 @@
                                 <constraint firstAttribute="width" constant="30" id="QbZ-bZ-eS4"/>
                             </constraints>
                             <state key="normal" image="Show"/>
+                            <connections>
+                                <action selector="actionShowDescription:" destination="-1" eventType="touchUpInside" id="Boc-JU-E9O"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8U-UZ-beW">
                             <rect key="frame" x="145" y="98" width="30" height="30"/>
@@ -116,7 +121,7 @@
                             <rect key="frame" x="0.0" y="136" width="320" height="44"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search chapter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Grr-ON-HcU">
-                                    <rect key="frame" x="8" y="15" width="90" height="14.5"/>
+                                    <rect key="frame" x="8" y="15" width="90" height="15"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="90" id="lUe-Cw-nIK"/>
                                     </constraints>
@@ -164,9 +169,19 @@
                         <constraint firstItem="vbU-EC-tAh" firstAttribute="leading" secondItem="Fo1-YS-Pc5" secondAttribute="trailing" constant="8" id="zhM-Q8-88F"/>
                     </constraints>
                 </view>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HPb-ot-Zgt">
+                    <rect key="frame" x="0.0" y="196" width="320" height="0.0"/>
+                    <color key="backgroundColor" red="0.18141924220995997" green="1" blue="0.78002545773449716" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" id="Mnw-Nk-VHQ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="HPb-ot-Zgt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4c8-DD-q9T"/>
                 <constraint firstAttribute="bottom" secondItem="SkJ-cW-cyM" secondAttribute="bottom" id="7Ea-Z6-6vv"/>
                 <constraint firstItem="SkJ-cW-cyM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CHi-1g-Fcz"/>
                 <constraint firstItem="LtL-Zt-c9A" firstAttribute="top" secondItem="d6D-dH-mW8" secondAttribute="bottom" id="DBv-pE-MsS"/>
@@ -174,7 +189,9 @@
                 <constraint firstItem="d6D-dH-mW8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="KE0-tT-qM6"/>
                 <constraint firstAttribute="trailing" secondItem="d6D-dH-mW8" secondAttribute="trailing" id="LpT-1W-bsZ"/>
                 <constraint firstAttribute="trailing" secondItem="LtL-Zt-c9A" secondAttribute="trailing" id="Pe3-tF-NQO"/>
+                <constraint firstItem="HPb-ot-Zgt" firstAttribute="top" secondItem="JbT-dD-ICH" secondAttribute="top" id="Qj9-a1-4Gy"/>
                 <constraint firstAttribute="trailing" secondItem="SkJ-cW-cyM" secondAttribute="trailing" id="hB9-dl-9VI"/>
+                <constraint firstAttribute="trailing" secondItem="HPb-ot-Zgt" secondAttribute="trailing" id="lgg-Dd-GqI"/>
                 <constraint firstItem="LtL-Zt-c9A" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nCE-39-mAW"/>
                 <constraint firstItem="d6D-dH-mW8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="r3L-3K-m95"/>
             </constraints>

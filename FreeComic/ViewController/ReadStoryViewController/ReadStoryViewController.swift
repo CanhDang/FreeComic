@@ -31,7 +31,11 @@ class ReadStoryViewController: UIViewController {
 
         self.requestData()
         
-        collectionView.prefetchDataSource = self
+        if #available(iOS 10.0, *) {
+            collectionView.prefetchDataSource = self
+        } else {
+            // Fallback on earlier versions
+        }
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.isPagingEnabled = true
