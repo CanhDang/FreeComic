@@ -39,7 +39,7 @@
                                 <segment title="Top"/>
                                 <segment title="New"/>
                             </segments>
-                            <color key="tintColor" red="0.29019607843137152" green="0.93967966590998808" blue="0.96668034034083439" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="actionSegment:" destination="-1" eventType="valueChanged" id="AAF-qz-uNa"/>
                             </connections>
