@@ -37,7 +37,7 @@ class HomeTableViewCell: UITableViewCell {
         self.thumbnail.kf.setImage(with: url, placeholder: UIImage(named: "no_thumbnail"), options: nil, progressBlock: nil, completionHandler: nil)
         
         
-        self.labelName.text = story.name
+        self.labelName.text = story.name.uppercased()
         self.labelAuthor.text = story.author
         self.labelNumberChapter.text = story.numberOfChap + " chapters"
     }

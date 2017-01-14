@@ -35,6 +35,9 @@ class DetailStoryViewController: UIViewController {
     
     @IBOutlet weak var textViewDescription: UITextView!
     
+    @IBOutlet weak var topTableViewConstraint: NSLayoutConstraint!
+    
+    
     var tapOutSearchBar: UIGestureRecognizer!
     
     var story: Story!
@@ -174,6 +177,7 @@ class DetailStoryViewController: UIViewController {
             UIView.animate(withDuration: 0.5, animations: {
                 self.buttonShowDescription.setImage(UIImage(named: "Show"), for: .normal)
                 self.textViewHeightConstraint.constant = 0
+                self.topTableViewConstraint.constant = 0
                 self.view.layoutSubviews()
                 
             }, completion: { (completed) in
@@ -183,7 +187,8 @@ class DetailStoryViewController: UIViewController {
         } else {
             UIView.animate(withDuration: 0.5, animations: {
                 self.buttonShowDescription.setImage(UIImage(named: "Dismiss"), for: .normal)
-                self.textViewHeightConstraint.constant = self.viewSearch.frame.height + self.detailTableView.frame.height / 2
+                self.textViewHeightConstraint.constant = self.detailTableView.frame.height / 2
+                self.topTableViewConstraint.constant = self.detailTableView.frame.height / 2
                 self.view.layoutSubviews()
             }, completion: { (completed) in
                 self.isShowingDesciption = true
