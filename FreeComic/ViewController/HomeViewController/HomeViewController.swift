@@ -16,9 +16,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    
-    
+
     var tapOutSearchBar: UIGestureRecognizer!
     
     var stories = [Story]()
@@ -32,11 +30,11 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
+
         // Add pan gesture open menu
         if revealViewController() != nil {
             view.addGestureRecognizer(revealViewController().panGestureRecognizer())
+            view.addGestureRecognizer(revealViewController().tapGestureRecognizer())
         }
         
         // Setup TableView
