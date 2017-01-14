@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -53,7 +52,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.29019607843137252" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="fW2-9F-Wyt" firstAttribute="centerY" secondItem="d6D-dH-mW8" secondAttribute="centerY" constant="5" id="1fA-oY-Loj"/>
                         <constraint firstItem="RV0-SY-YMa" firstAttribute="leading" secondItem="d6D-dH-mW8" secondAttribute="leading" constant="8" id="4ub-68-naN"/>
@@ -131,11 +130,11 @@
                                 </label>
                                 <searchBar contentMode="redraw" placeholder="Chapter Number" translatesAutoresizingMaskIntoConstraints="NO" id="p7o-qS-Ggi">
                                     <rect key="frame" x="106" y="0.0" width="206" height="44"/>
-                                    <color key="barTintColor" red="0.29019607843137252" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
                                 </searchBar>
                             </subviews>
-                            <color key="backgroundColor" red="0.29019607843137252" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="p7o-qS-Ggi" secondAttribute="trailing" constant="8" id="44A-Yy-Kk9"/>
                                 <constraint firstAttribute="height" constant="44" id="5HJ-s6-BZp"/>

@@ -23,7 +23,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tU7-GN-bN0">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
-                    <color key="backgroundColor" red="0.29019607843137257" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sln-I0-3Wl">
                     <rect key="frame" x="0.0" y="105" width="375" height="562"/>
@@ -46,7 +46,7 @@
                         </segmentedControl>
                         <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="Manga Name" translatesAutoresizingMaskIntoConstraints="NO" id="yWe-a6-W1g">
                             <rect key="frame" x="0.0" y="41" width="375" height="44"/>
-                            <color key="barTintColor" red="0.29019607843137257" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUB-AZ-RIS">
@@ -61,7 +61,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.29019607843137252" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137254901957" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="85" id="EtM-bQ-JOg"/>
                         <constraint firstItem="qJY-bW-r2L" firstAttribute="centerX" secondItem="EsM-RY-D6U" secondAttribute="centerX" id="Fze-O2-lLR"/>
@@ -75,6 +75,7 @@
                 </view>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="tU7-GN-bN0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="23R-Hv-m9F"/>
                 <constraint firstItem="EsM-RY-D6U" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4bH-L4-r7i"/>
