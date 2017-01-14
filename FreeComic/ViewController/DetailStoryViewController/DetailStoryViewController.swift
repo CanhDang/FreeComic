@@ -8,6 +8,7 @@
 
 import UIKit
 import ReachabilitySwift
+import RealmSwift
 
 class DetailStoryViewController: UIViewController {
 
@@ -37,6 +38,7 @@ class DetailStoryViewController: UIViewController {
     
     @IBOutlet weak var topTableViewConstraint: NSLayoutConstraint!
     
+    var realm: Realm!
     
     var tapOutSearchBar: UIGestureRecognizer!
     
@@ -45,6 +47,8 @@ class DetailStoryViewController: UIViewController {
     var chapters = [Chapter]()
     
     var isShowingDesciption: Bool = false
+    var isFavorited: Bool = false
+    
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -52,6 +56,8 @@ class DetailStoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //realm = try! Realm()
         
         searchBar.delegate = self
         
@@ -67,9 +73,24 @@ class DetailStoryViewController: UIViewController {
         
         addDoneButtonToKeyboard(myAction: #selector(actionSearch))
         
+        //checkFavorite()
+        
         requestLink(Constant.Request.requestDetailStory)
     }
     
+    func checkFavorite() {
+        
+        
+        let objects = realm.objects(FavoriteStory.self)
+        for object in objects {
+            if object.id == story.id {
+                story.isFavorited = true
+                self.isFavorited = true
+                buttonFavorite.setImage(#imageLiteral(resourceName: "Star_filled"), for: .normal)
+                break
+            }
+        }
+    }
     
     func requestLink(_ link: String) {
         
@@ -161,6 +182,53 @@ class DetailStoryViewController: UIViewController {
         searchBar.text = nil
     }
     
+
+    func saveStateFavorite() {
+        
+        if self.isFavorited == true {
+            self.story.isFavorited = false
+            let favoriteStory = FavoriteStory()
+            favoriteStory.name = self.story.name
+            favoriteStory.author = self.story.author
+            favoriteStory.genre = self.story.genre
+            favoriteStory.id = self.story.id
+            favoriteStory.numberOfChap = self.story.numberOfChap
+            favoriteStory.thumbUrl = self.story.thumbUrl
+            favoriteStory.rank = self.story.rank
+            do {
+                try self.realm.write {
+                    self.realm.add(favoriteStory)
+                }
+                print("write completed")
+            } catch {
+                print("error: \(error.localizedDescription)")
+            }
+  
+        } else {
+            
+        }
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        saveStateFavorite()
+    }
+    
+    @IBAction func actionFavorite(_ sender: Any) {
+        
+        if self.isFavorited == true {
+            self.isFavorited = false
+            self.buttonFavorite.setImage(#imageLiteral(resourceName: "Star_not_filled"), for: .normal)
+        } else {
+            self.isFavorited = true
+            self.buttonFavorite.setImage(#imageLiteral(resourceName: "Star_filled"), for: .normal)
+        }
+ 
+    }
+    
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -185,10 +253,6 @@ class DetailStoryViewController: UIViewController {
                 self.buttonShowDescription.isEnabled = true
             })
         } else {
-            
-//            let fixedWidth = textViewDescription.frame.width
-//            let newSize = textViewDescription.sizeThatFits(CGSize(width: fixedWidth, height: .greatestFiniteMagnitude))
-//            let newFrame = textViewDescription.frame
             
             var height = textViewDescription.contentSize.height
             

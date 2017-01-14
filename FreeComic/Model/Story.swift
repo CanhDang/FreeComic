@@ -17,6 +17,7 @@ class Story {
     var numberOfChap: String
     var rank: String
     var image: UIImage!
+    var isFavorited = false 
     
     init(id: String, name: String, genre: [String], author: String, thumbUrl: String, numberOfChap: String, rank: String) {
         self.id = id
