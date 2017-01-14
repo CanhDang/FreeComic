@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -12,15 +14,17 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ds-7g-Kux">
+                        <rect key="frame" x="62" y="11.5" width="42" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WnT-qh-qjZ">
+                        <rect key="frame" x="16" y="7" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="4RG-lZ-4Eo"/>
                             <constraint firstAttribute="width" constant="30" id="lRJ-bG-QBu"/>
@@ -29,10 +33,10 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="7Ds-7g-Kux" firstAttribute="leading" secondItem="WnT-qh-qjZ" secondAttribute="trailing" constant="8" id="5Fu-XX-Tgg"/>
+                    <constraint firstItem="7Ds-7g-Kux" firstAttribute="leading" secondItem="WnT-qh-qjZ" secondAttribute="trailing" constant="16" id="5Fu-XX-Tgg"/>
                     <constraint firstItem="7Ds-7g-Kux" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="GAU-0E-Tl4"/>
                     <constraint firstItem="WnT-qh-qjZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="agl-x1-vL8"/>
-                    <constraint firstItem="WnT-qh-qjZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="kBA-Y1-fY4"/>
+                    <constraint firstItem="WnT-qh-qjZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="kBA-Y1-fY4"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

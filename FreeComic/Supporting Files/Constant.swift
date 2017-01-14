@@ -18,7 +18,7 @@ struct Constant {
     }
     
     struct Color {
-        static let blueColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
+        static let blueColor = UIColor(red:0.00, green:0.48, blue:0.53, alpha:1.0)
     }
 
     struct MenuVC {
