@@ -23,6 +23,7 @@ class ReadStoryViewController: UIViewController {
     
     @IBOutlet weak var viewBar: UIView!
     
+    @IBOutlet weak var bottomBar: UIView!
     
     var tapGesture: UITapGestureRecognizer!
     
@@ -97,6 +98,7 @@ class ReadStoryViewController: UIViewController {
     func tapScreen(){
         if isTapScreen {
             labelPageNumber.isHidden = true
+            bottomBar.isHidden = true
             UIApplication.shared.isStatusBarHidden = true
             //viewBar.isHidden = true
             UIView.animate(withDuration: 0.5, animations: { 
@@ -110,6 +112,7 @@ class ReadStoryViewController: UIViewController {
                 self.viewBar.isHidden = false
             })
             labelPageNumber.isHidden = false
+            bottomBar.isHidden = false
             view.updateFocusIfNeeded()
             isTapScreen = true
         }
@@ -140,6 +143,26 @@ class ReadStoryViewController: UIViewController {
         self.labelPageNumber.text = "\(pageNumber + 1) - \(self.listImage.count)"
     }
     
+    //SAVE IMAGE TO LIBRARY
+    func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            // we got back an error!
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Saved!", message: "Image has been saved to your Photos.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+    }
+    
+    @IBAction func saveImage(_ sender: Any) {
+        let indexPath = IndexPath(item: pageNow, section: 0)
+        let cell = collectionView.cellForItem(at: indexPath) as! ReadStoryCell
+        let image = cell.imageView.image
+        UIImageWriteToSavedPhotosAlbum(image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
 }
 
 
