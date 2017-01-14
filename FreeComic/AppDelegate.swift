@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let vc = HomeViewController()
         let menu = MenuViewController()
         let main = SWRevealViewController(rearViewController: menu, frontViewController: vc)
-        main?.rearViewRevealWidth = UIScreen.main.bounds.width / 2
+        main?.rearViewRevealWidth = UIScreen.main.bounds.width / 3 * 2
         
         if let window = self.window {
             let nav = UINavigationController(rootViewController: main!)
@@ -31,8 +31,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
 
-        
         return true
+    }
+    
+    func changeRootView(vc: UIViewController) {
+        if let window = self.window {
+            let nav = UINavigationController(rootViewController: vc)
+            window.rootViewController = nav
+            nav.isNavigationBarHidden = true
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

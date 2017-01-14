@@ -84,4 +84,9 @@ struct Constant {
             static let collectionViewCell = "ReadStoryCell"
         }
     }
+    
+    struct Image {
+        static let starFilled = "Star_filled"
+        static let starNotFilled = "Star_not_filled"
+    }
 }
