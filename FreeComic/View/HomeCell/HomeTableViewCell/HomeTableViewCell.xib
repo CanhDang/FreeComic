@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="345" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="345" height="70"/>
+                <rect key="frame" x="0.0" y="0.0" width="345" height="69"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="a4s-Xu-d60">
@@ -27,7 +26,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="98I-Dd-w2p">
-                        <rect key="frame" x="71" y="8" width="274" height="17"/>
+                        <rect key="frame" x="71" y="8" width="240" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -45,7 +44,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MoreBlue" translatesAutoresizingMaskIntoConstraints="NO" id="UW4-Ut-urC">
-                        <rect key="frame" x="292" y="22.5" width="25" height="25"/>
+                        <rect key="frame" x="304" y="22.5" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="LP2-tn-a55"/>
                             <constraint firstAttribute="width" constant="25" id="hYd-wO-KFk"/>
@@ -58,11 +57,11 @@
                     <constraint firstItem="Y8z-1I-voR" firstAttribute="leading" secondItem="a4s-Xu-d60" secondAttribute="trailing" constant="8" id="Hs4-66-9J0"/>
                     <constraint firstItem="98I-Dd-w2p" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="LP7-gY-rSd"/>
                     <constraint firstItem="a4s-Xu-d60" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="QAP-VZ-cQX"/>
-                    <constraint firstItem="98I-Dd-w2p" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="8" id="XbK-Nd-Yk1"/>
+                    <constraint firstItem="98I-Dd-w2p" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-26" id="XbK-Nd-Yk1"/>
                     <constraint firstItem="UW4-Ut-urC" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="fFB-2f-0t7"/>
                     <constraint firstItem="Y8z-1I-voR" firstAttribute="top" secondItem="98I-Dd-w2p" secondAttribute="bottom" constant="8" id="fXv-5R-xkH"/>
-                    <constraint firstItem="98I-Dd-w2p" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="8" id="hQp-Oh-b4n"/>
-                    <constraint firstItem="UW4-Ut-urC" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-20" id="kIp-hy-wvp"/>
+                    <constraint firstItem="98I-Dd-w2p" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-26" id="hQp-Oh-b4n"/>
+                    <constraint firstItem="UW4-Ut-urC" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-8" id="kIp-hy-wvp"/>
                     <constraint firstItem="TTA-Sc-MMf" firstAttribute="top" secondItem="Y8z-1I-voR" secondAttribute="bottom" constant="4" id="noH-XG-69H"/>
                     <constraint firstItem="TTA-Sc-MMf" firstAttribute="leading" secondItem="a4s-Xu-d60" secondAttribute="trailing" constant="8" id="wfL-U7-egp"/>
                 </constraints>

@@ -19,6 +19,11 @@ class ReadStoryViewController: UIViewController {
     
     @IBOutlet weak var buttonBack: UIButton!
     
+    @IBOutlet weak var labelTitle: UILabel!
+    
+    @IBOutlet weak var viewBar: UIView!
+    
+    
     var tapGesture: UITapGestureRecognizer!
     
     var isTapScreen: Bool = true
@@ -48,9 +53,11 @@ class ReadStoryViewController: UIViewController {
         
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapScreen))
         tapGesture.numberOfTouchesRequired = 1
+        
         view.addGestureRecognizer(tapGesture)
+        
+        self.labelTitle.text = self.chapter.name
     }
-
     @IBAction func actionBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -91,14 +98,17 @@ class ReadStoryViewController: UIViewController {
         if isTapScreen {
             labelPageNumber.isHidden = true
             UIApplication.shared.isStatusBarHidden = true
-            //navigationController?.setNavigationBarHidden(true, animated: false)
-            buttonBack.isHidden = true
+            //viewBar.isHidden = true
+            UIView.animate(withDuration: 0.5, animations: { 
+                self.viewBar.isHidden = true
+            })
             view.updateFocusIfNeeded()
             isTapScreen = !isTapScreen
         }else{
             UIApplication.shared.isStatusBarHidden = false
-            //navigationController?.setNavigationBarHidden(false, animated: false)
-            buttonBack.isHidden = false 
+            UIView.animate(withDuration: 0.5, animations: {
+                self.viewBar.isHidden = false
+            })
             labelPageNumber.isHidden = false
             view.updateFocusIfNeeded()
             isTapScreen = true
@@ -154,6 +164,10 @@ extension ReadStoryViewController: UICollectionViewDataSource, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.ReadStoryVC.Identifier.collectionViewCell, for: indexPath) as! ReadStoryCell
         cell.imageView.kf.indicatorType = .activity
+        
+        if cell.doubleTap != nil {
+            self.tapGesture.require(toFail: cell.doubleTap)
+        }
         
         cell.transform = CGAffineTransform(scaleX: -1, y: 1)
         

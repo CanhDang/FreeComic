@@ -14,6 +14,9 @@ class ReadStoryCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     
+    var singleTap: UITapGestureRecognizer!
+    var doubleTap: UITapGestureRecognizer!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -30,10 +33,9 @@ class ReadStoryCell: UICollectionViewCell {
     func setupImageView() {
         imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(doubleTapGesture(_:)))
-        tapGesture.numberOfTapsRequired = 2
-        imageView.addGestureRecognizer(tapGesture)
-        
+        doubleTap = UITapGestureRecognizer(target: self, action: #selector(doubleTapGesture(_:)))
+        doubleTap.numberOfTapsRequired = 2
+        imageView.addGestureRecognizer(doubleTap)
         setZoomScale()
         scrollViewDidZoom(scrollView)
         
