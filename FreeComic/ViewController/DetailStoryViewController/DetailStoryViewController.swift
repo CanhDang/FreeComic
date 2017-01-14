@@ -185,10 +185,22 @@ class DetailStoryViewController: UIViewController {
                 self.buttonShowDescription.isEnabled = true
             })
         } else {
+            
+//            let fixedWidth = textViewDescription.frame.width
+//            let newSize = textViewDescription.sizeThatFits(CGSize(width: fixedWidth, height: .greatestFiniteMagnitude))
+//            let newFrame = textViewDescription.frame
+            
+            var height = textViewDescription.contentSize.height
+            
+            if height > detailTableView.frame.height/2 {
+                height = detailTableView.frame.height/2
+            }
+            
             UIView.animate(withDuration: 0.5, animations: {
                 self.buttonShowDescription.setImage(UIImage(named: "Dismiss"), for: .normal)
-                self.textViewHeightConstraint.constant = self.detailTableView.frame.height / 2
-                self.topTableViewConstraint.constant = self.detailTableView.frame.height / 2
+
+                self.textViewHeightConstraint.constant = height
+                self.topTableViewConstraint.constant = height
                 self.view.layoutSubviews()
             }, completion: { (completed) in
                 self.isShowingDesciption = true
