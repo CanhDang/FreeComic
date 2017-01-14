@@ -109,8 +109,8 @@ class DetailStoryViewController: UIViewController {
     }
     
     func setupDetailView() {
-        self.labelTitle.text = self.story.name
-        self.labelName.text = self.story.name
+        self.labelTitle.text = self.story.name.uppercased()
+        self.labelName.text = self.story.name.uppercased()
         self.labelAuthor.text = self.story.author
         self.labelNumberOfChapters.text = self.story.numberOfChap + " chapters"
         let url = URL(string: "http://" + story.thumbUrl)

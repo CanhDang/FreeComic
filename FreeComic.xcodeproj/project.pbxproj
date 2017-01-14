@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4563076C1E2AA3C900214B1B /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563076A1E2AA3C900214B1B /* FavoriteViewController.swift */; };
 		4563076D1E2AA3C900214B1B /* FavoriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4563076B1E2AA3C900214B1B /* FavoriteViewController.xib */; };
+		4563076F1E2AC77400214B1B /* FavoriteStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563076E1E2AC77400214B1B /* FavoriteStory.swift */; };
 		4565518C1E2801BD00B58E0E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565518B1E2801BD00B58E0E /* Image.swift */; };
 		456848181E277EE100887F7F /* ReadStoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456848161E277EE100887F7F /* ReadStoryCell.swift */; };
 		456848191E277EE100887F7F /* ReadStoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 456848171E277EE100887F7F /* ReadStoryCell.xib */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		4563076A1E2AA3C900214B1B /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		4563076B1E2AA3C900214B1B /* FavoriteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoriteViewController.xib; sourceTree = "<group>"; };
+		4563076E1E2AC77400214B1B /* FavoriteStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteStory.swift; sourceTree = "<group>"; };
 		4565518B1E2801BD00B58E0E /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		456848161E277EE100887F7F /* ReadStoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadStoryCell.swift; sourceTree = "<group>"; };
 		456848171E277EE100887F7F /* ReadStoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadStoryCell.xib; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				456EEC511E27353400BE7250 /* Genre.swift */,
 				456EEC531E27358300BE7250 /* Chapter.swift */,
 				4580B2621E23482900E2E476 /* DownloadManager.swift */,
+				4563076E1E2AC77400214B1B /* FavoriteStory.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				45CD93051E2152F200B0C8E5 /* MenuViewController.swift in Sources */,
 				456EEC501E27351D00BE7250 /* DetailStory.swift in Sources */,
 				4580B25F1E23405F00E2E476 /* Story.swift in Sources */,
+				4563076F1E2AC77400214B1B /* FavoriteStory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
