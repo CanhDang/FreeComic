@@ -44,6 +44,8 @@
 		45CD93301E21844E00B0C8E5 /* CustomButtonOrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CD932F1E21844E00B0C8E5 /* CustomButtonOrView.swift */; };
 		45CD93331E21853A00B0C8E5 /* Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CD93321E21853A00B0C8E5 /* Autolayout.swift */; };
 		9D0B5B5BAE38B97F18BF700D /* Pods_FreeComic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B63B477A4E6200F0021247C /* Pods_FreeComic.framework */; };
+		A87513871E2AD8FF00D9B194 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87513851E2AD8FF00D9B194 /* CategoryViewController.swift */; };
+		A87513881E2AD8FF00D9B194 /* CategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A87513861E2AD8FF00D9B194 /* CategoryViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +94,8 @@
 		49B09FB3EAC4BA5801C2BDF0 /* Pods-FreeComic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeComic.release.xcconfig"; path = "Pods/Target Support Files/Pods-FreeComic/Pods-FreeComic.release.xcconfig"; sourceTree = "<group>"; };
 		4B63B477A4E6200F0021247C /* Pods_FreeComic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreeComic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D3CF975D85006886F2AFA2 /* Pods-FreeComic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeComic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FreeComic/Pods-FreeComic.debug.xcconfig"; sourceTree = "<group>"; };
+		A87513851E2AD8FF00D9B194 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		A87513861E2AD8FF00D9B194 /* CategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,7 @@
 		4569B8231E209611008BD545 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				A87513841E2AD8E300D9B194 /* CategoryViewController */,
 				456307691E2AA3A100214B1B /* FavoriteViewController */,
 				456EEC591E276C5C00BE7250 /* ReadStoryViewController */,
 				4569B82F1E2097A0008BD545 /* HomeViewController */,
@@ -325,6 +330,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A87513841E2AD8E300D9B194 /* CategoryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A87513851E2AD8FF00D9B194 /* CategoryViewController.swift */,
+				A87513861E2AD8FF00D9B194 /* CategoryViewController.xib */,
+			);
+			path = CategoryViewController;
+			sourceTree = "<group>";
+		};
 		C31B6BB893869ECD9DBFF2D0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,6 +414,7 @@
 				4569B81C1E208F20008BD545 /* LaunchScreen.storyboard in Resources */,
 				45B1BA1B1E25D868006FFC18 /* DetailTableViewCell.xib in Resources */,
 				4563076D1E2AA3C900214B1B /* FavoriteViewController.xib in Resources */,
+				A87513881E2AD8FF00D9B194 /* CategoryViewController.xib in Resources */,
 				456EEC5D1E276C5C00BE7250 /* ReadStoryViewController.xib in Resources */,
 				4580B2671E237CDB00E2E476 /* DetailStoryViewController.xib in Resources */,
 				4580B25D1E23390200E2E476 /* HomeTableViewCell.xib in Resources */,
@@ -487,6 +502,7 @@
 				45CD93281E217F5B00B0C8E5 /* HomeViewController.swift in Sources */,
 				45CD93301E21844E00B0C8E5 /* CustomButtonOrView.swift in Sources */,
 				4580B2661E237CDB00E2E476 /* DetailStoryViewController.swift in Sources */,
+				A87513871E2AD8FF00D9B194 /* CategoryViewController.swift in Sources */,
 				45CD93051E2152F200B0C8E5 /* MenuViewController.swift in Sources */,
 				456EEC501E27351D00BE7250 /* DetailStory.swift in Sources */,
 				4580B25F1E23405F00E2E476 /* Story.swift in Sources */,
