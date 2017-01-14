@@ -62,4 +62,15 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case Constant.MenuVC.CellNumber.category:
+            let categoryVC = CategoryViewController()
+            revealViewController().pushFrontViewController(categoryVC, animated: true)
+        default:
+            let homeVC = HomeViewController()
+            revealViewController().pushFrontViewController(homeVC, animated: true)
+        }
+    }
+    
 }
