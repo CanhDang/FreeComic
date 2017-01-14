@@ -47,7 +47,7 @@ class HomeViewController: UIViewController {
         
         // Segment Control
         self.segmentedControl.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .normal)
-        self.segmentedControl.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .selected)
+        self.segmentedControl.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(red:0.00, green:0.48, blue:0.53, alpha:1.0)], for: .selected)
         
         // Setup SearchBar
         searchBar.layer.borderWidth = 1

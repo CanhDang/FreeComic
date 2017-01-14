@@ -27,11 +27,11 @@ struct Constant {
         
         struct CellName {
             static let home = "Home"
-            static let category = "Category"
-            static let favorites = "Favorties"
+            static let category = "Categories"
+            static let favorites = "Favorites"
             static let library = "Library"
-            static let bookmark = "Bookmark"
-            static let recent = "Recent"
+            static let bookmark = "Bookmarks"
+            static let recent = "Recents"
         }
         
         struct CellNumber {

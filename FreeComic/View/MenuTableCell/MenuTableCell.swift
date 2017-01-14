@@ -21,6 +21,7 @@ class MenuTableCell: UITableViewCell {
         let bgColorView = UIView()
         bgColorView.backgroundColor = Constant.Color.blueColor
         self.selectedBackgroundView = bgColorView
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
