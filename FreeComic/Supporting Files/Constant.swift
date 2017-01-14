@@ -8,6 +8,23 @@
 
 struct Constant {
     
+    static let category = [
+        "1":"action",
+        "2": "adventure",
+        "3": "comedy",
+        "15": "drama",
+        "4": "fantasy",
+        "8": "horror",
+        "31": "manhua",
+        "47": "martial arts",
+        "10": "mystery",
+        "22": "romance",
+        "26": "school life",
+        "27": "shoujo",
+        "5": "shounen",
+        "17": "slice of life",
+        "6": "supernatural"
+    ]
     
     struct Request {
         static let requestAll = "http://stage.yennhidesign.com/source1n.json"
