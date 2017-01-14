@@ -11,6 +11,8 @@ struct Constant {
     
     struct Request {
         static let requestAll = "http://stage.yennhidesign.com/source1n.json"
+        static let requestTop = "http://stage.yennhidesign.com/source1r.json"
+        static let requestNew = "http://stage.yennhidesign.com/update1.json"
         static let requestDetailStory = "http://stage.yennhidesign.com/manga%@.json"
         static let requestChapter = "http://stage.yennhidesign.com/chapter%@.json"
     }
@@ -49,6 +51,18 @@ struct Constant {
         
         struct NibName {
             static let homeTableViewCell = "HomeTableViewCell"
+        }
+        
+        struct String {
+            static let OK = "OK"
+            static let Alert = "Alert"
+            static let NoInternetConnection = "No Internet Connection"
+        }
+        
+        struct Segment {
+            static let all = 0
+            static let top = 1
+            static let new = 2 
         }
     }
     

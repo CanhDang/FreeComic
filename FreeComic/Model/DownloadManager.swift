@@ -19,7 +19,6 @@ class DownloadManager {
         guard let url = URL(string: stringURL) else {
             return
         }
- 
             var stories = [Story]()
             
             Alamofire.request(url).responseJSON { (response) in
@@ -64,6 +63,59 @@ class DownloadManager {
                     completion(stories)
                 }
             }
+    }
+    
+    func downloadNew(stringURL: String, completion: @escaping(_ stories:[Story]) -> Void) {
+        guard let url = URL(string: stringURL) else {
+            return
+        }
+        var stories = [Story]()
+        
+        Alamofire.request(url).responseJSON { (response) in
+            if let value = response.result.value {
+                let json = JSON(value)
+                
+                let update = json["update"]
+                
+                let mangas = update["mangas"].arrayValue
+                
+                for manga in mangas {
+                    guard let id = manga["i"].string else {
+                        continue
+                    }
+                    guard let name = manga["n"].string else {
+                        continue
+                    }
+                    guard let thumbUrl = manga["c"].string else {
+                        continue
+                    }
+                    guard let numberOfChap = manga["t"].string else {
+                        continue
+                    }
+                    guard let rank = manga["r"].string else {
+                        continue
+                    }
+                    var genre = [String]()
+                    if let genresJson = manga["g"].array {
+                        for genreJson in genresJson {
+                            if let item = genreJson["i"].string {
+                                genre.append(item)
+                            }
+                        }
+                    }
+                    var author = ""
+                    if let authorsJson = manga["a"].array {
+                        if let au = authorsJson[0]["n"].string {
+                            author = au
+                        }
+                    }
+                    let story = Story(id: id, name: name, genre: genre, author: author, thumbUrl: thumbUrl, numberOfChap: numberOfChap, rank: rank)
+                    stories.append(story)
+                }
+                completion(stories)
+            }
+        }
+        
     }
     
     func downloadDetailStory(stringURL: String, completion: @escaping(_ detailStory: DetailStory?) -> Void) {

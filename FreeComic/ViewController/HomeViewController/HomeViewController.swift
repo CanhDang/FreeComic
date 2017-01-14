@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     
+    
     var tapOutSearchBar: UIGestureRecognizer!
     
     var stories = [Story]()
@@ -52,35 +53,61 @@ class HomeViewController: UIViewController {
         searchBar.layer.borderWidth = 1
         searchBar.layer.borderColor = Constant.Color.blueColor.cgColor
         searchBar.delegate = self
-//        let cancelButtonAttributes: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
-//        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes as? [String : AnyObject], for: UIControlState.normal)
 
         UISearchBar.appearance().tintColor = UIColor.white
         
         // Request Data
-        self.requestData()
+        self.requestData(Constant.Request.requestAll)
         
     }
     
-    func requestData() {
+    func requestData(_ link: String) {
         
-        let loading = MBProgressHUD.showAdded(to: self.view, animated: true)
-        loading.mode = .indeterminate
-        loading.label.text = "Loading"
+        let reachability = Reachability()
         
-        DownloadManager.share.downloadAllOrTop(stringURL: Constant.Request.requestAll) { (allStories) in
-            self.allStories = allStories.sorted(by: { (a, b) -> Bool in
-                a.name < b.name
-            })
-            self.stories = self.allStories
+        reachability?.whenReachable = { reachability in
+            
             DispatchQueue.main.async {
-                MBProgressHUD.hide(for: self.view, animated: true)
-                self.homeTableView.reloadData()
+                let loading = MBProgressHUD.showAdded(to: self.view, animated: true)
+                loading.mode = .indeterminate
+                loading.label.text = "Loading"
+            }
+            
+            if link == Constant.Request.requestNew {
+                
+                DownloadManager.share.downloadNew(stringURL: link, completion: { (newStories) in
+                    self.allStories = newStories.sorted(by: { (a, b) -> Bool in
+                        a.name < b.name
+                    })
+                    self.stories = self.allStories
+                    DispatchQueue.main.async {
+                        MBProgressHUD.hide(for: self.view, animated: true)
+                        self.homeTableView.reloadData()
+                    }
+                })
+                
+            } else {
+                DownloadManager.share.downloadAllOrTop(stringURL: link) { (allStories) in
+                    self.allStories = allStories.sorted(by: { (a, b) -> Bool in
+                        a.name < b.name
+                    })
+                    self.stories = self.allStories
+                    DispatchQueue.main.async {
+                        MBProgressHUD.hide(for: self.view, animated: true)
+                        self.homeTableView.reloadData()
+                    }
+                }
             }
         }
+        
+        reachability?.whenUnreachable = { reachability in
+            self.showAlert(title: Constant.HomeVC.String.Alert, message: Constant.HomeVC.String.NoInternetConnection)
+            
+        }
+        
+        try! reachability?.startNotifier()
     }
     
-
     @IBAction func actionOpenMenu(_ sender: AnyObject) {
         
         self.endSearchBar()
@@ -93,13 +120,20 @@ class HomeViewController: UIViewController {
     @IBAction func actionSegment(_ sender: AnyObject) {
         
         switch segmentedControl.selectedSegmentIndex {
-        case 1:
-            break
-        case 2:
-            break
+        case Constant.HomeVC.Segment.top:
+            self.requestData(Constant.Request.requestTop)
+        case Constant.HomeVC.Segment.new:
+            self.requestData(Constant.Request.requestNew)
         default:
-            break
+            self.requestData(Constant.Request.requestAll)
         }
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let actionOk = UIAlertAction(title: Constant.HomeVC.String.OK, style: .default, handler: nil)
+        alertController.addAction(actionOk)
+        self.present(alertController, animated: true, completion: nil)
     }
     
 }
@@ -130,6 +164,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         self.endSearchBar()
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if self.searchBar.isFirstResponder == true {
+            searchBar.resignFirstResponder()
+        }
+    }
     
 }
 

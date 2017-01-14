@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReachabilitySwift
 
 class DetailStoryViewController: UIViewController {
 
@@ -63,18 +64,24 @@ class DetailStoryViewController: UIViewController {
         
         addDoneButtonToKeyboard(myAction: #selector(actionSearch))
         
-        requestLink()
+        requestLink(Constant.Request.requestDetailStory)
     }
     
     
-    func requestLink() {
+    func requestLink(_ link: String) {
         
-        let loading = MBProgressHUD.showAdded(to: self.view, animated: true)
-        loading.mode = .indeterminate
-        loading.label.text = "Loading"
+        let reachability = Reachability()
         
-        let linkString = String(format: Constant.Request.requestDetailStory, self.story.id)
-        print(linkString)
+        reachability?.whenReachable = { reachability in
+        
+            DispatchQueue.main.async {
+                let loading = MBProgressHUD.showAdded(to: self.view, animated: true)
+                loading.mode = .indeterminate
+                loading.label.text = "Loading"
+            }
+        
+        let linkString = String(format: link, self.story.id)
+        
         DownloadManager.share.downloadDetailStory(stringURL: linkString) { (detailStory) in
             if detailStory != nil {
                 self.detailStory = detailStory
@@ -87,6 +94,15 @@ class DetailStoryViewController: UIViewController {
                 }
             }
         }
+            
+        }
+        
+        reachability?.whenUnreachable = { reachability in
+            self.showAlert(title: Constant.HomeVC.String.Alert, message: Constant.HomeVC.String.NoInternetConnection)
+            
+        }
+        
+        try! reachability?.startNotifier()
     }
     
     func setupDetailView() {
@@ -174,6 +190,13 @@ class DetailStoryViewController: UIViewController {
                 self.buttonShowDescription.isEnabled = true 
             })
         }
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let actionOk = UIAlertAction(title: Constant.HomeVC.String.OK, style: .default, handler: nil)
+        alertController.addAction(actionOk)
+        self.present(alertController, animated: true, completion: nil)
     }
     
 }
