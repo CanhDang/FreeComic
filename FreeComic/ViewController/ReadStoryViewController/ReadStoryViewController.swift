@@ -55,6 +55,7 @@ class ReadStoryViewController: UIViewController {
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapScreen))
         tapGesture.numberOfTouchesRequired = 1
         
+        
         view.addGestureRecognizer(tapGesture)
         
         self.labelTitle.text = self.chapter.name

@@ -72,6 +72,8 @@ class DetailStoryViewController: UIViewController {
         viewSearch.layer.borderColor = Constant.Color.blueColor.cgColor
         
         addDoneButtonToKeyboard(myAction: #selector(actionSearch))
+        self.textViewDescription.textContainerInset = UIEdgeInsetsMake(10, 10, 10, 10)
+        
         
         checkFavorite()
         
