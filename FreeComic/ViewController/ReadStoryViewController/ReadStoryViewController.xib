@@ -25,9 +25,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="KX5-xn-0oj">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="KX5-xn-0oj">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="te4-8n-vON">
                         <size key="itemSize" width="50" height="50"/>
@@ -122,9 +121,13 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="KX5-xn-0oj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1th-Rc-Oon"/>
                 <constraint firstItem="cod-fm-zui" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4ca-n5-GNO"/>
+                <constraint firstAttribute="bottom" secondItem="KX5-xn-0oj" secondAttribute="bottom" id="CN9-IB-EQ6"/>
                 <constraint firstItem="rOv-I8-sMz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="FVZ-x6-Y89"/>
                 <constraint firstAttribute="trailing" secondItem="cod-fm-zui" secondAttribute="trailing" id="Ojs-d8-U5u"/>
+                <constraint firstAttribute="trailing" secondItem="KX5-xn-0oj" secondAttribute="trailing" id="S0y-Q6-SPs"/>
+                <constraint firstItem="KX5-xn-0oj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WQt-Si-TrY"/>
                 <constraint firstAttribute="trailing" secondItem="rOv-I8-sMz" secondAttribute="trailing" id="eqm-Qi-mzA"/>
                 <constraint firstAttribute="bottom" secondItem="cod-fm-zui" secondAttribute="bottom" id="fmh-ht-ZJ0"/>
                 <constraint firstItem="rOv-I8-sMz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iPg-6o-rsN"/>
