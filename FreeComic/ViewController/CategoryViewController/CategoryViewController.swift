@@ -28,7 +28,13 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         return self.categoryTable.frame.width / 3
     }
         
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(Constant.category[indexPath.row].name)
+        let categoryDetailView = CategoryDetailViewController(nibName: "CategoryDetailViewController", bundle: nil)
+        categoryDetailView.genreID = Constant.category[indexPath.row].id
+        categoryDetailView.genreName = Constant.category[indexPath.row].name
+        self.navigationController?.pushViewController(categoryDetailView, animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

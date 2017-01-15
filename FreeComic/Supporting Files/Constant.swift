@@ -9,21 +9,21 @@
 struct Constant {
     
     static let category = [
-        Category(name: "action",id: 1),
-        Category(name: "adventure",id: 2),
-        Category(name: "comedy",id: 15),
-        Category(name: "drama",id: 4),
-        Category(name: "fantasy",id: 8),
-        Category(name: "horror",id: 31),
-        Category(name: "manhua",id: 47),
-        Category(name: "martial arts",id: 10),
-        Category(name: "mystery",id: 22),
-        Category(name: "romance",id: 26),
-        Category(name: "school life",id: 27),
-        Category(name: "shoujo",id: 5),
-        Category(name: "shounen",id: 17),
-        Category(name: "slice of life",id: 17),
-        Category(name: "supernatural",id: 6)
+        Category(name: "action",id: "1"),
+        Category(name: "adventure",id: "2"),
+        Category(name: "comedy",id: "15"),
+        Category(name: "drama",id: "4"),
+        Category(name: "fantasy",id: "8"),
+        Category(name: "horror",id: "31"),
+        Category(name: "manhua",id: "47"),
+        Category(name: "martial arts",id: "10"),
+        Category(name: "mystery",id: "22"),
+        Category(name: "romance",id: "26"),
+        Category(name: "school life",id: "27"),
+        Category(name: "shoujo",id: "5"),
+        Category(name: "shounen",id: "17"),
+        Category(name: "slice of life",id: "17"),
+        Category(name: "supernatural",id: "6")
     ] as [Category]
     
     struct Request {
