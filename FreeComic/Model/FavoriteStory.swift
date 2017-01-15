@@ -20,6 +20,6 @@ class FavoriteStory: Object {
     dynamic var thumbUrl: String = ""
     dynamic var numberOfChap: String = ""
     dynamic var rank: String = ""
-    dynamic var dataImage = NSData()
+    dynamic var dataImage: NSData? = nil 
     let genre = List<FavoriteGenre>()
 }

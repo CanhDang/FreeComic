@@ -102,6 +102,15 @@ struct Constant {
         }
     }
     
+    struct FavoriteVC {
+        struct Identifier {
+            static let collectionViewCell = "FavoriteCollectionCell"
+        }
+        struct NibName {
+            static let collectionViewCell = "FavoriteCollectionCell"
+        }
+    }
+    
     struct Image {
         static let starFilled = "Star_filled"
         static let starNotFilled = "Star_not_filled"

@@ -67,6 +67,9 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         case Constant.MenuVC.CellNumber.category:
             let categoryVC = CategoryViewController()
             revealViewController().pushFrontViewController(categoryVC, animated: true)
+        case Constant.MenuVC.CellNumber.favorites:
+            let favoriteVC = FavoriteViewController()
+            revealViewController().pushFrontViewController(favoriteVC, animated: true)
         default:
             let homeVC = HomeViewController()
             revealViewController().pushFrontViewController(homeVC, animated: true)
@@ -74,3 +77,5 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
 }
+
+
