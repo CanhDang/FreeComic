@@ -139,7 +139,7 @@
     <resources>
         <image name="Back" width="50" height="50"/>
         <image name="bookmark2" width="512" height="512"/>
-        <image name="download" width="256" height="256"/>
+        <image name="download" width="512" height="512"/>
         <image name="photo-camera" width="512" height="512"/>
     </resources>
 </document>
