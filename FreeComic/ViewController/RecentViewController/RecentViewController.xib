@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,12 +21,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZl-i5-4kA">
-                    <rect key="frame" x="139" y="80" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LLN-eW-Let">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                     <subviews>
@@ -62,17 +57,24 @@
                     <rect key="frame" x="0.0" y="60" width="320" height="508"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZl-i5-4kA">
+                    <rect key="frame" x="64" y="303.5" width="192" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="sZl-i5-4kA" firstAttribute="top" secondItem="LLN-eW-Let" secondAttribute="bottom" constant="20" id="4ZS-JU-zRi"/>
                 <constraint firstAttribute="trailing" secondItem="LLN-eW-Let" secondAttribute="trailing" id="Cha-bJ-T0X"/>
                 <constraint firstAttribute="trailing" secondItem="H6n-oC-UMh" secondAttribute="trailing" id="Ue5-HL-ITO"/>
                 <constraint firstItem="H6n-oC-UMh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ae8-yZ-xXZ"/>
+                <constraint firstItem="sZl-i5-4kA" firstAttribute="centerY" secondItem="H6n-oC-UMh" secondAttribute="centerY" id="f5n-26-wIR"/>
                 <constraint firstAttribute="bottom" secondItem="H6n-oC-UMh" secondAttribute="bottom" id="f8I-Uw-6Ag"/>
+                <constraint firstItem="sZl-i5-4kA" firstAttribute="width" secondItem="H6n-oC-UMh" secondAttribute="width" multiplier="0.6" id="k3Y-xc-Lo3"/>
                 <constraint firstItem="LLN-eW-Let" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lUM-Bo-epm"/>
-                <constraint firstItem="sZl-i5-4kA" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="pZp-Ho-Odl"/>
                 <constraint firstItem="H6n-oC-UMh" firstAttribute="top" secondItem="LLN-eW-Let" secondAttribute="bottom" id="rVS-lP-SAQ"/>
+                <constraint firstItem="sZl-i5-4kA" firstAttribute="centerX" secondItem="H6n-oC-UMh" secondAttribute="centerX" id="ux0-FH-Ztq"/>
                 <constraint firstItem="LLN-eW-Let" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vlp-Pc-dPS"/>
             </constraints>
         </view>
