@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavoriteViewController" customModule="FreeComic" customModuleProvider="target">
             <connections>
+                <outlet property="collectionView" destination="UzD-Ke-hpr" id="txA-sf-YK9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -28,6 +29,9 @@
                                 <constraint firstAttribute="height" constant="30" id="adM-sm-Pbd"/>
                             </constraints>
                             <state key="normal" image="icon_menu"/>
+                            <connections>
+                                <action selector="actionOpenMenu:" destination="-1" eventType="touchUpInside" id="W0f-gU-udm"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorties" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mCJ-8X-58o">
                             <rect key="frame" x="122" y="26" width="77.5" height="23"/>
@@ -36,7 +40,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.29019607843137252" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137254901957" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="mCJ-8X-58o" firstAttribute="centerY" secondItem="DWG-uR-Pnm" secondAttribute="centerY" id="1wi-4M-sxX"/>
                         <constraint firstItem="DWG-uR-Pnm" firstAttribute="leading" secondItem="cay-wY-9Zv" secondAttribute="leading" constant="8" id="Ixt-fx-ow4"/>
@@ -66,7 +70,7 @@
                 <constraint firstAttribute="trailing" secondItem="UzD-Ke-hpr" secondAttribute="trailing" id="ko3-8F-Ygz"/>
                 <constraint firstAttribute="trailing" secondItem="cay-wY-9Zv" secondAttribute="trailing" id="mbx-zb-eMP"/>
             </constraints>
-            <point key="canvasLocation" x="35" y="81"/>
+            <point key="canvasLocation" x="4" y="82"/>
         </view>
     </objects>
     <resources>
