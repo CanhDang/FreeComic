@@ -48,6 +48,9 @@
 		9D0B5B5BAE38B97F18BF700D /* Pods_FreeComic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B63B477A4E6200F0021247C /* Pods_FreeComic.framework */; };
 		A87513871E2AD8FF00D9B194 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87513851E2AD8FF00D9B194 /* CategoryViewController.swift */; };
 		A87513881E2AD8FF00D9B194 /* CategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A87513861E2AD8FF00D9B194 /* CategoryViewController.xib */; };
+		A87513901E2AE39F00D9B194 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A875138E1E2AE39F00D9B194 /* CategoryCell.swift */; };
+		A87513911E2AE39F00D9B194 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A875138F1E2AE39F00D9B194 /* CategoryCell.xib */; };
+		A87513931E2AE6CD00D9B194 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87513921E2AE6CD00D9B194 /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +103,9 @@
 		92D3CF975D85006886F2AFA2 /* Pods-FreeComic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeComic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FreeComic/Pods-FreeComic.debug.xcconfig"; sourceTree = "<group>"; };
 		A87513851E2AD8FF00D9B194 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		A87513861E2AD8FF00D9B194 /* CategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryViewController.xib; sourceTree = "<group>"; };
+		A875138E1E2AE39F00D9B194 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		A875138F1E2AE39F00D9B194 /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
+		A87513921E2AE6CD00D9B194 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +298,7 @@
 				456EEC531E27358300BE7250 /* Chapter.swift */,
 				4580B2621E23482900E2E476 /* DownloadManager.swift */,
 				4563076E1E2AC77400214B1B /* FavoriteStory.swift */,
+				A87513921E2AE6CD00D9B194 /* Category.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -300,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				456307701E2AECE300214B1B /* FavoriteCell */,
+				A875138D1E2AE38100D9B194 /* CategoryCell */,
 				456848151E277EC400887F7F /* ReadStoryCell */,
 				45B1BA171E25D854006FFC18 /* DetailTableCell */,
 				45CD93151E2173C100B0C8E5 /* HomeCell */,
@@ -351,6 +359,16 @@
 				A87513861E2AD8FF00D9B194 /* CategoryViewController.xib */,
 			);
 			path = CategoryViewController;
+			sourceTree = "<group>";
+		};
+		A875138D1E2AE38100D9B194 /* CategoryCell */ = {
+			isa = PBXGroup;
+			children = (
+				A875138E1E2AE39F00D9B194 /* CategoryCell.swift */,
+				A875138F1E2AE39F00D9B194 /* CategoryCell.xib */,
+			);
+			name = CategoryCell;
+			path = HomeCell/CategoryCell;
 			sourceTree = "<group>";
 		};
 		C31B6BB893869ECD9DBFF2D0 /* Frameworks */ = {
@@ -426,6 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4569B81C1E208F20008BD545 /* LaunchScreen.storyboard in Resources */,
+				A87513911E2AE39F00D9B194 /* CategoryCell.xib in Resources */,
 				45B1BA1B1E25D868006FFC18 /* DetailTableViewCell.xib in Resources */,
 				4563076D1E2AA3C900214B1B /* FavoriteViewController.xib in Resources */,
 				A87513881E2AD8FF00D9B194 /* CategoryViewController.xib in Resources */,
@@ -510,6 +529,7 @@
 				4565518C1E2801BD00B58E0E /* Image.swift in Sources */,
 				456EEC5C1E276C5C00BE7250 /* ReadStoryViewController.swift in Sources */,
 				45B1BA161E25C451006FFC18 /* MBProgressHUD.m in Sources */,
+				A87513901E2AE39F00D9B194 /* CategoryCell.swift in Sources */,
 				4569B8121E208F20008BD545 /* AppDelegate.swift in Sources */,
 				456EEC521E27353400BE7250 /* Genre.swift in Sources */,
 				4569B8371E209851008BD545 /* SWRevealViewController.m in Sources */,
@@ -520,6 +540,7 @@
 				4580B2661E237CDB00E2E476 /* DetailStoryViewController.swift in Sources */,
 				A87513871E2AD8FF00D9B194 /* CategoryViewController.swift in Sources */,
 				45CD93051E2152F200B0C8E5 /* MenuViewController.swift in Sources */,
+				A87513931E2AE6CD00D9B194 /* Category.swift in Sources */,
 				456EEC501E27351D00BE7250 /* DetailStory.swift in Sources */,
 				4580B25F1E23405F00E2E476 /* Story.swift in Sources */,
 				4563076F1E2AC77400214B1B /* FavoriteStory.swift in Sources */,

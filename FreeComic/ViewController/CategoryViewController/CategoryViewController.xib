@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CategoryViewController" customModule="FreeComic" customModuleProvider="target">
             <connections>
+                <outlet property="categoryTable" destination="ok6-gD-oOg" id="gr3-Kr-ElZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -48,12 +49,20 @@
                         <constraint firstItem="sr2-P9-YfP" firstAttribute="centerX" secondItem="Uz5-Iy-ehc" secondAttribute="centerX" id="cyT-4U-rvx"/>
                     </constraints>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ok6-gD-oOg">
+                    <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Uz5-Iy-ehc" secondAttribute="trailing" id="0Xa-DC-wxI"/>
                 <constraint firstItem="Uz5-Iy-ehc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Fl2-jF-jTI"/>
                 <constraint firstItem="Uz5-Iy-ehc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="HeB-Yb-I2f"/>
+                <constraint firstAttribute="trailing" secondItem="ok6-gD-oOg" secondAttribute="trailing" id="Hzf-As-Ijs"/>
+                <constraint firstAttribute="bottom" secondItem="ok6-gD-oOg" secondAttribute="bottom" id="LzC-Vp-aiy"/>
+                <constraint firstItem="ok6-gD-oOg" firstAttribute="top" secondItem="Uz5-Iy-ehc" secondAttribute="bottom" id="OEP-CT-mnB"/>
+                <constraint firstItem="ok6-gD-oOg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tKy-8z-RRe"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="78.5"/>
         </view>

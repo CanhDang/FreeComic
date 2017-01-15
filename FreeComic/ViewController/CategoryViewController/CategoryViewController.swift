@@ -8,13 +8,35 @@
 
 import UIKit
 
-class CategoryViewController: UIViewController {
+class CategoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var categoryTable: UITableView!
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return Constant.category.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
+        
+        cell.configure(category: Constant.category[indexPath.row])
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.categoryTable.frame.width / 3
+    }
+        
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let nib = UINib(nibName: "CategoryCell", bundle: nil)
+        self.categoryTable.register(nib, forCellReuseIdentifier: "CategoryCell")
+        
+        self.categoryTable.delegate = self
+        self.categoryTable.dataSource = self
         // Do any additional setup after loading the view.
     }
 
@@ -29,6 +51,5 @@ class CategoryViewController: UIViewController {
             revealViewController().revealToggle(animated: true)
         }
     }
-
-
+    
 }
