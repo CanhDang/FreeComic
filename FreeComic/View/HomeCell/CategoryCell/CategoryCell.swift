@@ -11,7 +11,7 @@ import UIKit
 class CategoryCell: UITableViewCell {
     @IBOutlet weak var categoryCover: UIImageView!
     
-    var cellID:Int?
+    var cellID:String?
 
     override func awakeFromNib() {
         super.awakeFromNib()

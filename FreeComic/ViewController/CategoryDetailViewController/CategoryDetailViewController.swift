@@ -9,11 +9,11 @@
 import UIKit
 import ReachabilitySwift
 
-class HomeViewController: UIViewController {
+class CategoryDetailViewController: UIViewController {
     
-    @IBOutlet weak var homeTableView: UITableView!
+    @IBOutlet weak var barName: UILabel!
     
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -22,6 +22,12 @@ class HomeViewController: UIViewController {
     var stories = [Story]()
     
     var allStories = [Story]()
+    
+    var allStoriesSort = [Story]()
+    
+    var genreID = String()
+    
+    var genreName = String()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -39,13 +45,10 @@ class HomeViewController: UIViewController {
         
         // Setup TableView
         let nib = UINib(nibName: Constant.HomeVC.NibName.homeTableViewCell, bundle: nil)
-        self.homeTableView.register(nib, forCellReuseIdentifier: Constant.HomeVC.Identifier.tableViewCell)
-        self.homeTableView.delegate = self
-        self.homeTableView.dataSource = self
-        
-        // Segment Control
-        self.segmentedControl.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .normal)
-        self.segmentedControl.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(red:0.00, green:0.48, blue:0.53, alpha:1.0)], for: .selected)
+        self.tableView.register(nib, forCellReuseIdentifier: Constant.HomeVC.Identifier.tableViewCell)
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.barName.text = self.genreName.capitalized
         
         // Setup SearchBar
         searchBar.layer.borderWidth = 1
@@ -58,6 +61,7 @@ class HomeViewController: UIViewController {
         self.requestData(Constant.Request.requestAll)
         
     }
+    
     
     func requestData(_ link: String) {
         
@@ -80,19 +84,26 @@ class HomeViewController: UIViewController {
                     self.stories = self.allStories
                     DispatchQueue.main.async {
                         MBProgressHUD.hide(for: self.view, animated: true)
-                        self.homeTableView.reloadData()
+                        self.tableView.reloadData()
                     }
                 })
                 
             } else {
                 DownloadManager.share.downloadAllOrTop(stringURL: link) { (allStories) in
-                    self.allStories = allStories.sorted(by: { (a, b) -> Bool in
+                    for story in allStories {
+                        for gen in story.genre {
+                            if ( gen == self.genreID) {
+                                self.allStories.append(story)
+                            }
+                        }
+                    }
+                    self.allStoriesSort = self.allStories.sorted(by: { (a, b) -> Bool in
                         a.name < b.name
                     })
-                    self.stories = self.allStories
+                    self.stories = self.allStoriesSort
                     DispatchQueue.main.async {
                         MBProgressHUD.hide(for: self.view, animated: true)
-                        self.homeTableView.reloadData()
+                        self.tableView.reloadData()
                     }
                 }
             }
@@ -110,22 +121,14 @@ class HomeViewController: UIViewController {
         
         self.endSearchBar()
         
-        if revealViewController() != nil {
-            revealViewController().revealToggle(self)
-        }
+//        if revealViewController() != nil {
+//            revealViewController().revealToggle(self)
+//        }
+        
+        self.navigationController!.popViewController(animated: true)
+        
     }
     
-    @IBAction func actionSegment(_ sender: AnyObject) {
-        
-        switch segmentedControl.selectedSegmentIndex {
-        case Constant.HomeVC.Segment.top:
-            self.requestData(Constant.Request.requestTop)
-        case Constant.HomeVC.Segment.new:
-            self.requestData(Constant.Request.requestNew)
-        default:
-            self.requestData(Constant.Request.requestAll)
-        }
-    }
     
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -136,7 +139,7 @@ class HomeViewController: UIViewController {
     
 }
 
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+extension CategoryDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.stories.count
     }
@@ -170,7 +173,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-extension HomeViewController: UISearchBarDelegate {
+extension CategoryDetailViewController: UISearchBarDelegate {
     
     func endSearchBar() {
         if self.searchBar.isFirstResponder == true {
@@ -197,7 +200,7 @@ extension HomeViewController: UISearchBarDelegate {
         self.endSearchBar()
         self.stories = []
         self.stories = self.allStories
-        self.homeTableView.reloadData()
+        self.tableView.reloadData()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -207,7 +210,7 @@ extension HomeViewController: UISearchBarDelegate {
                 self.stories.append(story)
             }
         }
-        self.homeTableView.reloadData()
+        self.tableView.reloadData()
     }
 }
 

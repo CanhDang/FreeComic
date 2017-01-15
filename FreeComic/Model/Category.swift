@@ -10,8 +10,8 @@ import Foundation
 
 class Category {
     var name: String
-    var id: Int
-    init (name: String, id: Int) {
+    var id: String
+    init (name: String, id: String) {
         self.name = name
         self.id = id
     }
