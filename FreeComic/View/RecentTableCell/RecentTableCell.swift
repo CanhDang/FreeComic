@@ -41,7 +41,7 @@ class RecentTableCell: UITableViewCell {
         
         self.labelName.text = recentStory.name
         self.labelAuthor.text = recentStory.author
-        self.labelNumberChapter.text = recentStory.numberOfChap
+        self.labelNumberChapter.text = recentStory.chapterName
         self.labelTime.text = recentStory.time
   
     }

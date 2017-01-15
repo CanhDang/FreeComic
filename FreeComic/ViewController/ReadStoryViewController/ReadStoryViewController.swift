@@ -111,11 +111,12 @@ class ReadStoryViewController: UIViewController {
                 recentStory.rank = self.story.rank
                 recentStory.chapterId = chapter.id
                 recentStory.chapterName = chapter.name
-            
+        
                 if let data = UIImagePNGRepresentation(story.image!) {
                     recentStory.dataImage = data as NSData
                 }
-                
+        
+                recentStory.date = Date() as NSDate
                 recentStory.time = timeString
                 
                 do {
