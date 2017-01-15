@@ -24,5 +24,6 @@ class RecentStory: Object {
     dynamic var chapterId: String = ""
     dynamic var chapterName: String = "" 
     dynamic var time: String = ""
+    dynamic var date = NSDate()
     let genre = List<RecentGenre>()
 }
