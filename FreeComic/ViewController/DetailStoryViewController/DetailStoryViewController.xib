@@ -34,8 +34,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6D-dH-mW8">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fW2-9F-Wyt">
-                            <rect key="frame" x="139" y="25" width="42" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fW2-9F-Wyt">
+                            <rect key="frame" x="0.0" y="25" width="320" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -57,9 +57,9 @@
                     <constraints>
                         <constraint firstItem="fW2-9F-Wyt" firstAttribute="centerY" secondItem="d6D-dH-mW8" secondAttribute="centerY" constant="5" id="1fA-oY-Loj"/>
                         <constraint firstItem="RV0-SY-YMa" firstAttribute="leading" secondItem="d6D-dH-mW8" secondAttribute="leading" constant="8" id="4ub-68-naN"/>
+                        <constraint firstAttribute="trailing" secondItem="fW2-9F-Wyt" secondAttribute="trailing" id="69S-Dd-V7w"/>
                         <constraint firstAttribute="height" constant="60" id="Cmd-3U-XE7"/>
                         <constraint firstItem="fW2-9F-Wyt" firstAttribute="centerX" secondItem="d6D-dH-mW8" secondAttribute="centerX" id="QiN-0w-kuY"/>
-                        <constraint firstItem="fW2-9F-Wyt" firstAttribute="width" relation="lessThanOrEqual" secondItem="d6D-dH-mW8" secondAttribute="width" constant="-80" id="Xxa-wi-izG"/>
                         <constraint firstItem="RV0-SY-YMa" firstAttribute="centerY" secondItem="d6D-dH-mW8" secondAttribute="centerY" constant="5" id="oHf-oJ-RYL"/>
                     </constraints>
                 </view>
