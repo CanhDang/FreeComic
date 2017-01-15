@@ -25,8 +25,8 @@
                             <constraint firstAttribute="width" constant="55" id="e0W-DL-bYP"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Knd-Jf-14k">
-                        <rect key="frame" x="71" y="8" width="240" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Knd-Jf-14k">
+                        <rect key="frame" x="71" y="8" width="216" height="17"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -43,34 +43,40 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LQf-KY-FMX">
-                        <rect key="frame" x="251" y="0.0" width="37" height="31"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greenbookmark" translatesAutoresizingMaskIntoConstraints="NO" id="LQf-KY-FMX">
+                        <rect key="frame" x="304" y="0.0" width="26" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="31" id="Ao1-yD-ECi"/>
+                            <constraint firstAttribute="width" constant="26" id="eRq-Xc-ikL"/>
+                        </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Knd-Jf-14k" firstAttribute="trailing" secondItem="LGM-36-V7g" secondAttribute="trailingMargin" constant="-26" id="8zM-hh-FmC"/>
+                    <constraint firstItem="Knd-Jf-14k" firstAttribute="trailing" secondItem="LGM-36-V7g" secondAttribute="trailingMargin" constant="-50" id="8zM-hh-FmC"/>
                     <constraint firstItem="SPa-7P-8qu" firstAttribute="top" secondItem="Knd-Jf-14k" secondAttribute="bottom" constant="8" id="Dsc-a8-PJy"/>
-                    <constraint firstItem="Knd-Jf-14k" firstAttribute="trailing" secondItem="LGM-36-V7g" secondAttribute="trailingMargin" constant="-26" id="TXM-sb-FTu"/>
+                    <constraint firstItem="Knd-Jf-14k" firstAttribute="trailing" secondItem="LGM-36-V7g" secondAttribute="trailingMargin" constant="-50" id="TXM-sb-FTu"/>
                     <constraint firstItem="Gxv-t6-Bna" firstAttribute="centerY" secondItem="LGM-36-V7g" secondAttribute="centerY" id="VMO-Yt-SUX"/>
+                    <constraint firstAttribute="trailing" secondItem="LQf-KY-FMX" secondAttribute="trailing" constant="15" id="X7D-4k-xZH"/>
                     <constraint firstItem="Gxv-t6-Bna" firstAttribute="leading" secondItem="LGM-36-V7g" secondAttribute="leading" constant="8" id="fK3-dH-5uh"/>
                     <constraint firstItem="SPa-7P-8qu" firstAttribute="leading" secondItem="Gxv-t6-Bna" secondAttribute="trailing" constant="8" id="lrj-UN-AjQ"/>
                     <constraint firstItem="Knd-Jf-14k" firstAttribute="top" secondItem="LGM-36-V7g" secondAttribute="topMargin" id="n1I-75-WNE"/>
                     <constraint firstItem="Cy7-uM-lUZ" firstAttribute="leading" secondItem="Gxv-t6-Bna" secondAttribute="trailing" constant="8" id="oHC-bd-0x2"/>
+                    <constraint firstItem="LQf-KY-FMX" firstAttribute="top" secondItem="LGM-36-V7g" secondAttribute="top" id="okx-BW-cYz"/>
                     <constraint firstItem="Cy7-uM-lUZ" firstAttribute="top" secondItem="SPa-7P-8qu" secondAttribute="bottom" constant="4" id="w6z-bO-UsE"/>
                     <constraint firstItem="Knd-Jf-14k" firstAttribute="leading" secondItem="Gxv-t6-Bna" secondAttribute="trailing" constant="8" id="xta-eE-dmY"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="labelAuthor" destination="SPa-7P-8qu" id="JIj-om-GhF"/>
-                <outlet property="labelName" destination="Knd-Jf-14k" id="myK-Tg-gra"/>
-                <outlet property="labelNumberChapter" destination="Cy7-uM-lUZ" id="AKr-Rr-vkP"/>
-                <outlet property="thumbnail" destination="Gxv-t6-Bna" id="oKO-Ci-yMp"/>
+                <outlet property="labelAuthor" destination="SPa-7P-8qu" id="oLZ-Jp-PCR"/>
+                <outlet property="labelName" destination="Knd-Jf-14k" id="mIN-dO-qRM"/>
+                <outlet property="labelNumberChapter" destination="Cy7-uM-lUZ" id="RD3-j2-Drs"/>
+                <outlet property="thumbView" destination="Gxv-t6-Bna" id="AVL-NQ-xV4"/>
             </connections>
             <point key="canvasLocation" x="26.5" y="52"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="greenbookmark" width="378" height="512"/>
         <image name="no_thumbnail" width="75" height="75"/>
     </resources>
 </document>

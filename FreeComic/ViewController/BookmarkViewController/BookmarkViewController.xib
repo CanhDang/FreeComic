@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BookmarkViewController" customModule="FreeComic" customModuleProvider="target">
             <connections>
+                <outlet property="bookmarkTableView" destination="KVC-Hd-Z0e" id="a1y-od-QtY"/>
                 <outlet property="view" destination="53H-pG-8I2" id="AyV-Pl-R5C"/>
             </connections>
         </placeholder>
@@ -36,6 +37,9 @@
                                 <constraint firstAttribute="width" constant="30" id="edz-FV-I2l"/>
                             </constraints>
                             <state key="normal" image="icon_menu"/>
+                            <connections>
+                                <action selector="actioinOpenMenu:" destination="-1" eventType="touchUpInside" id="4cD-xh-iv1"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bookmark" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqa-Wg-FKc">
                             <rect key="frame" x="144.5" y="26" width="86" height="23"/>

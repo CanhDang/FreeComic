@@ -26,13 +26,20 @@ class ReadStoryViewController: UIViewController {
     
     @IBOutlet weak var bottomBar: UIView!
     
+    @IBOutlet weak var buttonBookmark: UIButton!
+    
+    
     var tapGesture: UITapGestureRecognizer!
     
     var isTapScreen: Bool = true
     var listImage = [Image]()
     var pageNow = 0
     var chapter: Chapter!
-    var story: Story! 
+    var story: Story!
+    var pageToScroll: Int!
+    
+    var isBookmarked: Bool = false
+    var initialBookmarked: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,11 +71,19 @@ class ReadStoryViewController: UIViewController {
     }
     
     @IBAction func actionBack(_ sender: Any) {
+        self.saveBookmark(pageNow)
         self.navigationController?.popViewController(animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         saveRecentStory()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if self.pageToScroll != nil {
+            let indexPath = IndexPath(item: self.pageToScroll, section: 0)
+            self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        }
     }
     
     func saveRecentStory() {
@@ -231,19 +246,118 @@ class ReadStoryViewController: UIViewController {
         let image = cell.imageView.image
         UIImageWriteToSavedPhotosAlbum(image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
+    
+    @IBAction func actionBookmark(_ sender: Any) {
+
+        if isBookmarked == true {
+            self.buttonBookmark.setImage(#imageLiteral(resourceName: "bookmark2"), for: .normal)
+            isBookmarked = false
+        } else {
+            self.buttonBookmark.setImage(#imageLiteral(resourceName: "bookmarked"), for: .normal)
+            isBookmarked = true
+        }
+
+    }
+    
+    func checkInitialBookmark(_ pageCheck: Int) {
+        
+        self.initialBookmarked = false
+        self.buttonBookmark.setImage(#imageLiteral(resourceName: "bookmark2"), for: .normal)
+        self.isBookmarked = false
+        
+        let realm = try! Realm()
+        
+        let objects = realm.objects(BookmarkStory.self)
+        
+        for object in objects {
+            if object.id == self.story.id {
+                if object.chapterId == self.chapter.id {
+                    if object.pageNumber == pageCheck {
+                        self.initialBookmarked = true
+                        self.isBookmarked = true
+                        self.buttonBookmark.setImage(#imageLiteral(resourceName: "bookmarked"), for: .normal)
+                        break
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    func saveBookmark(_ pageCheck: Int) {
+        
+        let realm = try! Realm()
+        
+        if self.isBookmarked == true && self.initialBookmarked == false {
+
+            let bookmarkStory = BookmarkStory()
+            bookmarkStory.name = self.story.name
+            bookmarkStory.author = self.story.author
+            
+            for item in self.story.genre {
+                let bookmarkGenre = RealmGenre()
+                bookmarkGenre.id = item
+                bookmarkStory.genre.append(bookmarkGenre)
+            }
+            
+            bookmarkStory.id = self.story.id
+            bookmarkStory.numberOfChap = self.story.numberOfChap
+            bookmarkStory.thumbUrl = self.story.thumbUrl
+            bookmarkStory.rank = self.story.rank
+            bookmarkStory.chapterId = chapter.id
+            bookmarkStory.chapterName = chapter.name
+            
+            if let data = UIImagePNGRepresentation(story.image!) {
+                bookmarkStory.dataImage = data as NSData
+            }
+            
+            bookmarkStory.pageNumber = pageNow
+            
+            do {
+                try realm.write {
+                    realm.add(bookmarkStory)
+                }
+                print("write completed")
+            } catch {
+                print("error: \(error.localizedDescription)")
+            }
+        }
+        else if self.isBookmarked == false && self.initialBookmarked == true {
+            
+            let objects = realm.objects(BookmarkStory.self)
+            
+            for object in objects {
+                if object.id == self.story.id && object.chapterId == self.chapter.id && object.pageNumber == pageCheck {
+                    try! realm.write {
+                        realm.delete(object)
+                    }
+                    break
+                }
+            }
+            
+        }
+        
+        
+    }
+    
+    
 }
 
 
 extension ReadStoryViewController: UICollectionViewDelegate {
-    // begin 
+    // begin
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let url = URL(string: listImage[indexPath.item].link)
         (cell as! ReadStoryCell).imageView.kf.setImage(with: url)
+        
+        self.checkInitialBookmark(indexPath.item)
     }
     
     // end 
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         (cell as! ReadStoryCell).imageView.kf.cancelDownloadTask()
+        
+        self.saveBookmark(indexPath.item)
     }
 }
 

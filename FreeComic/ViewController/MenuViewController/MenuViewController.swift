@@ -73,6 +73,9 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         case Constant.MenuVC.CellNumber.recent:
             let recentVC = RecentViewController()
             revealViewController().pushFrontViewController(recentVC, animated: true)
+        case Constant.MenuVC.CellNumber.bookmark:
+            let bookmarkVC = BookmarkViewController()
+            revealViewController().pushFrontViewController(bookmarkVC, animated: true)
         default:
             let homeVC = HomeViewController()
             revealViewController().pushFrontViewController(homeVC, animated: true)

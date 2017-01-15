@@ -120,6 +120,15 @@ struct Constant {
         }
     }
     
+    struct BookmarkVC {
+        struct Identifier {
+            static let tableViewCell = "BookmarkTableCell"
+        }
+        struct NibName {
+            static let tableViewCell = "BookmarkTableCell"
+        }
+    }
+    
     struct Image {
         static let starFilled = "Star_filled"
         static let starNotFilled = "Star_not_filled"
