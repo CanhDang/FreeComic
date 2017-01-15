@@ -3,22 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "HomeViewController.(viewDidLoad() -&gt; ()).(closure #1):HomeViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.stories">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "DownloadManager.(downloadAllOrTop(stringURL : String, completion : ([Story]) -&gt; ()) -&gt; ()).(closure #1):DownloadManager.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "url">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "DetailStoryViewController.setupHeaderView() -&gt; ():DetailStoryViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -29,6 +13,41 @@
             </PersistentString>
             <PersistentString
                value = "detailTableView.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "HomeViewController.(viewDidLoad() -&gt; ()).(closure #1):HomeViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.stories">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DetailStoryViewController.saveStateFavorite() -&gt; ():DetailStoryViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.isFavorited">
+            </PersistentString>
+            <PersistentString
+               value = "self.story.isFavorited">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DetailStoryViewController.checkFavorite() -&gt; ():DetailStoryViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.story.isFavorited">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DownloadManager.(downloadAllOrTop(stringURL : String, completion : ([Story]) -&gt; ()) -&gt; ()).(closure #1):DownloadManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "url">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

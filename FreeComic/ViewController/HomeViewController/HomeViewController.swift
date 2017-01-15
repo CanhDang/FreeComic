@@ -27,6 +27,15 @@ class HomeViewController: UIViewController {
         return .lightContent
     }
     
+    var link : String!
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        
+        return refreshControl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,8 +64,55 @@ class HomeViewController: UIViewController {
         UISearchBar.appearance().tintColor = UIColor.white
         
         // Request Data
+        self.link = Constant.Request.requestAll
         self.requestData(Constant.Request.requestAll)
         
+        // Pull to refresh
+        self.homeTableView.addSubview(self.refreshControl)
+        
+    }
+    
+    // Refresh Table View
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        
+        let reachability = Reachability()
+        
+        reachability?.whenReachable = { reachability in
+            
+            if self.link == Constant.Request.requestNew {
+                
+                DownloadManager.share.downloadNew(stringURL: self.link, completion: { (newStories) in
+                    self.allStories = newStories.sorted(by: { (a, b) -> Bool in
+                        a.name < b.name
+                    })
+                    self.stories = self.allStories
+                    DispatchQueue.main.async {
+                        self.homeTableView.reloadData()
+                        refreshControl.endRefreshing()
+                    }
+                })
+                
+            } else {
+                DownloadManager.share.downloadAllOrTop(stringURL: self.link) { (allStories) in
+                    self.allStories = allStories.sorted(by: { (a, b) -> Bool in
+                        a.name < b.name
+                    })
+                    self.stories = self.allStories
+                    DispatchQueue.main.async {
+                        self.homeTableView.reloadData()
+                        refreshControl.endRefreshing()
+                    }
+                }
+            }
+        }
+        reachability?.whenUnreachable = { reachability in
+            self.showAlert(title: Constant.HomeVC.String.Alert, message: Constant.HomeVC.String.NoInternetConnection)
+            DispatchQueue.main.async {
+                refreshControl.endRefreshing()
+            }
+        }
+        
+        try! reachability?.startNotifier()
     }
     
     func requestData(_ link: String) {
@@ -106,6 +162,8 @@ class HomeViewController: UIViewController {
         try! reachability?.startNotifier()
     }
     
+    
+    
     @IBAction func actionOpenMenu(_ sender: AnyObject) {
         
         self.endSearchBar()
@@ -119,10 +177,16 @@ class HomeViewController: UIViewController {
         
         switch segmentedControl.selectedSegmentIndex {
         case Constant.HomeVC.Segment.top:
+            self.endSearchBar()
+            self.link = Constant.Request.requestTop
             self.requestData(Constant.Request.requestTop)
         case Constant.HomeVC.Segment.new:
+            self.endSearchBar()
+            self.link = Constant.Request.requestNew
             self.requestData(Constant.Request.requestNew)
         default:
+            self.endSearchBar()
+            self.link = Constant.Request.requestAll
             self.requestData(Constant.Request.requestAll)
         }
     }
@@ -167,6 +231,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             searchBar.resignFirstResponder()
         }
     }
+    
+    
     
 }
 

@@ -57,7 +57,7 @@ class DetailStoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //realm = try! Realm()
+        realm = try! Realm()
         
         searchBar.delegate = self
         
@@ -72,8 +72,10 @@ class DetailStoryViewController: UIViewController {
         viewSearch.layer.borderColor = Constant.Color.blueColor.cgColor
         
         addDoneButtonToKeyboard(myAction: #selector(actionSearch))
+        self.textViewDescription.textContainerInset = UIEdgeInsetsMake(10, 10, 10, 10)
         
-        //checkFavorite()
+        
+        checkFavorite()
         
         requestLink(Constant.Request.requestDetailStory)
         
@@ -102,8 +104,7 @@ class DetailStoryViewController: UIViewController {
     }
     
     func checkFavorite() {
-        
-        
+
         let objects = realm.objects(FavoriteStory.self)
         for object in objects {
             if object.id == story.id {
@@ -208,16 +209,26 @@ class DetailStoryViewController: UIViewController {
 
     func saveStateFavorite() {
         
-        if self.isFavorited == true {
-            self.story.isFavorited = false
+        if self.isFavorited == true && self.story.isFavorited == false {
             let favoriteStory = FavoriteStory()
             favoriteStory.name = self.story.name
             favoriteStory.author = self.story.author
-            favoriteStory.genre = self.story.genre
+            
+            for item in self.story.genre {
+                let favoriteGenre = FavoriteGenre()
+                favoriteGenre.id = item
+                favoriteStory.genre.append(favoriteGenre)
+            }
+            
             favoriteStory.id = self.story.id
             favoriteStory.numberOfChap = self.story.numberOfChap
             favoriteStory.thumbUrl = self.story.thumbUrl
             favoriteStory.rank = self.story.rank
+            
+            if let data = UIImagePNGRepresentation(imageThumb.image!) {
+                favoriteStory.dataImage = data as NSData
+            }
+
             do {
                 try self.realm.write {
                     self.realm.add(favoriteStory)
@@ -227,8 +238,18 @@ class DetailStoryViewController: UIViewController {
                 print("error: \(error.localizedDescription)")
             }
   
-        } else {
+        } else if self.isFavorited == false && self.story.isFavorited == true {
             
+            let objects = realm.objects(FavoriteStory.self)
+            for object in objects {
+                if object.id == story.id {
+                    try! self.realm.write {
+                        self.realm.delete(object)
+                    }
+                    self.story.isFavorited = false 
+                    break
+                }
+            }
         }
     }
     
