@@ -14,13 +14,13 @@ class FavoriteViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+  
     var favoriteStories = [FavoriteStory]()
     
     var realm: Realm!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         collectionView.delegate = self
         collectionView.dataSource = self
         let nib = UINib(nibName: Constant.FavoriteVC.NibName.collectionViewCell, bundle: nil)

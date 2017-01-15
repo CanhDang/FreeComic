@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window.makeKeyAndVisible()
             
         }
-
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         return true
     }
     
