@@ -111,6 +111,15 @@ struct Constant {
         }
     }
     
+    struct RecentVC {
+        struct Identifier {
+            static let tableViewCell = "RecentTableCell"
+        }
+        struct NibName {
+            static let tableViewCell = "RecentTableCell"
+        }
+    }
+    
     struct Image {
         static let starFilled = "Star_filled"
         static let starNotFilled = "Star_not_filled"

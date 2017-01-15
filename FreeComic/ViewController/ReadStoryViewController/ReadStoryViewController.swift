@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import RealmSwift
 
 class ReadStoryViewController: UIViewController {
 
@@ -31,6 +32,7 @@ class ReadStoryViewController: UIViewController {
     var listImage = [Image]()
     var pageNow = 0
     var chapter: Chapter!
+    var story: Story! 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,8 +62,72 @@ class ReadStoryViewController: UIViewController {
         
         self.labelTitle.text = self.chapter.name
     }
+    
     @IBAction func actionBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        saveRecentStory()
+    }
+    
+    func saveRecentStory() {
+        
+        let date = Date()
+        let dateFormater = DateFormatter()
+//        dateFormater.dateStyle = .medium
+//        dateFormater.timeStyle = .short
+        dateFormater.dateFormat = "dd-MM-yyyy hh:mm:ss"
+        let timeString = dateFormater.string(from: date)
+        
+        let realm = try! Realm()
+        
+        let objects = realm.objects(RecentStory.self)
+        
+        
+        for object in objects {
+            if object.id == self.story.id {
+                try! realm.write {
+                    realm.delete(object)
+                }
+                break
+            }
+        }
+        
+        
+                let recentStory = RecentStory()
+                recentStory.name = self.story.name
+                recentStory.author = self.story.author
+                
+                for item in self.story.genre {
+                    let recentGenre = RecentGenre()
+                    recentGenre.id = item
+                    recentStory.genre.append(recentGenre)
+                }
+                
+                recentStory.id = self.story.id
+                recentStory.numberOfChap = self.story.numberOfChap
+                recentStory.thumbUrl = self.story.thumbUrl
+                recentStory.rank = self.story.rank
+                recentStory.chapterId = chapter.id
+                recentStory.chapterName = chapter.name
+            
+                if let data = UIImagePNGRepresentation(story.image!) {
+                    recentStory.dataImage = data as NSData
+                }
+                
+                recentStory.time = timeString
+                
+                do {
+                    try realm.write {
+                        realm.add(recentStory)
+                    }
+                    print("write completed")
+                } catch {
+                    print("error: \(error.localizedDescription)")
+                }
+            
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

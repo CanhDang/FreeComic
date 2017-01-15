@@ -341,7 +341,11 @@ extension DetailStoryViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let readStoryVC = ReadStoryViewController()
+        if imageThumb.image != nil {
+            story.image = imageThumb.image
+        }
         readStoryVC.chapter = self.chapters[indexPath.row]
+        readStoryVC.story = self.story
         
         self.navigationController?.pushViewController(readStoryVC, animated: true)
     }

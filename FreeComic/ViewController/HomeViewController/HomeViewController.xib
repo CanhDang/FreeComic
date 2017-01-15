@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -32,8 +32,27 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EsM-RY-D6U">
                     <rect key="frame" x="0.0" y="20" width="375" height="85"/>
                     <subviews>
+                        <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="Manga Name" translatesAutoresizingMaskIntoConstraints="NO" id="yWe-a6-W1g">
+                            <rect key="frame" x="0.0" y="41" width="375" height="44"/>
+                            <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUB-AZ-RIS">
+                            <rect key="frame" x="8" y="8" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="NmD-4s-oHR"/>
+                                <constraint firstAttribute="height" constant="30" id="jc2-tD-lHY"/>
+                            </constraints>
+                            <state key="normal" image="icon_menu"/>
+                            <connections>
+                                <action selector="actionOpenMenu:" destination="-1" eventType="touchUpInside" id="h56-rJ-gf2"/>
+                            </connections>
+                        </button>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qJY-bW-r2L">
-                            <rect key="frame" x="125" y="8" width="125" height="29"/>
+                            <rect key="frame" x="87.5" y="8" width="200" height="29"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="200" id="ykY-jB-Xxx"/>
+                            </constraints>
                             <segments>
                                 <segment title="All"/>
                                 <segment title="Top"/>
@@ -44,22 +63,6 @@
                                 <action selector="actionSegment:" destination="-1" eventType="valueChanged" id="AAF-qz-uNa"/>
                             </connections>
                         </segmentedControl>
-                        <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="Manga Name" translatesAutoresizingMaskIntoConstraints="NO" id="yWe-a6-W1g">
-                            <rect key="frame" x="0.0" y="41" width="375" height="44"/>
-                            <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </searchBar>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUB-AZ-RIS">
-                            <rect key="frame" x="8" y="6" width="30" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="30" id="NmD-4s-oHR"/>
-                                <constraint firstAttribute="height" constant="30" id="jc2-tD-lHY"/>
-                            </constraints>
-                            <state key="normal" image="icon_menu"/>
-                            <connections>
-                                <action selector="actionOpenMenu:" destination="-1" eventType="touchUpInside" id="h56-rJ-gf2"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.47843137254901957" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -90,7 +93,7 @@
                 <constraint firstAttribute="trailing" secondItem="Sln-I0-3Wl" secondAttribute="trailing" id="zsH-qg-9eO"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-            <point key="canvasLocation" x="17" y="48"/>
+            <point key="canvasLocation" x="16.5" y="47.5"/>
         </view>
     </objects>
     <resources>
