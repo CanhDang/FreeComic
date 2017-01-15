@@ -1,5 +1,5 @@
 //
-//  RecentStory.swift
+//  BookmarkStory.swift
 //  FreeComic
 //
 //  Created by Enrik on 1/15/17.
@@ -9,11 +9,11 @@
 import Foundation
 import RealmSwift
 
-class RecentGenre: Object {
+class RealmGenre: Object {
     dynamic var id: String = ""
 }
 
-class RecentStory: Object {
+class BookmarkStory: Object {
     dynamic var id = ""
     dynamic var name: String = ""
     dynamic var author: String = ""
@@ -22,9 +22,8 @@ class RecentStory: Object {
     dynamic var rank: String = ""
     dynamic var dataImage: NSData? = nil
     dynamic var chapterId: String = ""
-    dynamic var chapterName: String = "" 
-    dynamic var time: String = ""
-    dynamic var date = NSDate()
-
-    let genre = List<RecentGenre>()
+    dynamic var chapterName: String = ""
+    dynamic var pageNumber: Int = -1
+    
+    let genre = List<RealmGenre>()
 }

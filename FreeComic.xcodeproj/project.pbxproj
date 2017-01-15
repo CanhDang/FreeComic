@@ -21,6 +21,11 @@
 		456307831E2B448300214B1B /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 456307811E2B448300214B1B /* CategoryCell.xib */; };
 		456307871E2B45A900214B1B /* RecentTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456307851E2B45A900214B1B /* RecentTableCell.swift */; };
 		456307881E2B45A900214B1B /* RecentTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 456307861E2B45A900214B1B /* RecentTableCell.xib */; };
+		4563078C1E2B727800214B1B /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563078A1E2B727800214B1B /* BookmarkViewController.swift */; };
+		4563078D1E2B727800214B1B /* BookmarkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4563078B1E2B727800214B1B /* BookmarkViewController.xib */; };
+		4563078F1E2B746A00214B1B /* BookmarkStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563078E1E2B746A00214B1B /* BookmarkStory.swift */; };
+		456307931E2B755A00214B1B /* BookmarkTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456307911E2B755A00214B1B /* BookmarkTableCell.swift */; };
+		456307941E2B755A00214B1B /* BookmarkTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 456307921E2B755A00214B1B /* BookmarkTableCell.xib */; };
 		4565518C1E2801BD00B58E0E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565518B1E2801BD00B58E0E /* Image.swift */; };
 		456848181E277EE100887F7F /* ReadStoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456848161E277EE100887F7F /* ReadStoryCell.swift */; };
 		456848191E277EE100887F7F /* ReadStoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 456848171E277EE100887F7F /* ReadStoryCell.xib */; };
@@ -75,6 +80,11 @@
 		456307811E2B448300214B1B /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryCell.xib; path = FreeComic/View/CategoryCell/CategoryCell.xib; sourceTree = SOURCE_ROOT; };
 		456307851E2B45A900214B1B /* RecentTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentTableCell.swift; sourceTree = "<group>"; };
 		456307861E2B45A900214B1B /* RecentTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentTableCell.xib; sourceTree = "<group>"; };
+		4563078A1E2B727800214B1B /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
+		4563078B1E2B727800214B1B /* BookmarkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookmarkViewController.xib; sourceTree = "<group>"; };
+		4563078E1E2B746A00214B1B /* BookmarkStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkStory.swift; sourceTree = "<group>"; };
+		456307911E2B755A00214B1B /* BookmarkTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkTableCell.swift; sourceTree = "<group>"; };
+		456307921E2B755A00214B1B /* BookmarkTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookmarkTableCell.xib; sourceTree = "<group>"; };
 		4565518B1E2801BD00B58E0E /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		456848161E277EE100887F7F /* ReadStoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadStoryCell.swift; sourceTree = "<group>"; };
 		456848171E277EE100887F7F /* ReadStoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadStoryCell.xib; sourceTree = "<group>"; };
@@ -179,6 +189,24 @@
 			path = RecentTableCell;
 			sourceTree = "<group>";
 		};
+		456307891E2B724E00214B1B /* BookmarkViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4563078A1E2B727800214B1B /* BookmarkViewController.swift */,
+				4563078B1E2B727800214B1B /* BookmarkViewController.xib */,
+			);
+			path = BookmarkViewController;
+			sourceTree = "<group>";
+		};
+		456307901E2B754100214B1B /* BookmarkTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				456307911E2B755A00214B1B /* BookmarkTableCell.swift */,
+				456307921E2B755A00214B1B /* BookmarkTableCell.xib */,
+			);
+			path = BookmarkTableCell;
+			sourceTree = "<group>";
+		};
 		456848151E277EC400887F7F /* ReadStoryCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +256,7 @@
 		4569B8231E209611008BD545 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				456307891E2B724E00214B1B /* BookmarkViewController */,
 				4563077B1E2B3C6C00214B1B /* RecentViewController */,
 				2C19E23D1E2AF210006CA98B /* CategoryDetailViewController */,
 				A87513841E2AD8E300D9B194 /* CategoryViewController */,
@@ -343,6 +372,7 @@
 				4563076E1E2AC77400214B1B /* FavoriteStory.swift */,
 				A87513921E2AE6CD00D9B194 /* Category.swift */,
 				456307791E2B2BF200214B1B /* RecentStory.swift */,
+				4563078E1E2B746A00214B1B /* BookmarkStory.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -350,6 +380,7 @@
 		45CD930A1E21623B00B0C8E5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				456307901E2B754100214B1B /* BookmarkTableCell */,
 				456307841E2B458600214B1B /* RecentTableCell */,
 				456307701E2AECE300214B1B /* FavoriteCell */,
 				A875138D1E2AE38100D9B194 /* CategoryCell */,
@@ -488,13 +519,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				456307941E2B755A00214B1B /* BookmarkTableCell.xib in Resources */,
 				4569B81C1E208F20008BD545 /* LaunchScreen.storyboard in Resources */,
 				2C19E2451E2AFCF9006CA98B /* CategoryDetailViewController.xib in Resources */,
-				A87513911E2AE39F00D9B194 /* CategoryCell.xib in Resources */,
 				45B1BA1B1E25D868006FFC18 /* DetailTableViewCell.xib in Resources */,
 				4563076D1E2AA3C900214B1B /* FavoriteViewController.xib in Resources */,
 				A87513881E2AD8FF00D9B194 /* CategoryViewController.xib in Resources */,
 				456EEC5D1E276C5C00BE7250 /* ReadStoryViewController.xib in Resources */,
+				4563078D1E2B727800214B1B /* BookmarkViewController.xib in Resources */,
 				4580B2671E237CDB00E2E476 /* DetailStoryViewController.xib in Resources */,
 				4580B25D1E23390200E2E476 /* HomeTableViewCell.xib in Resources */,
 				4569B8191E208F20008BD545 /* Assets.xcassets in Resources */,
@@ -579,7 +611,6 @@
 				456EEC5C1E276C5C00BE7250 /* ReadStoryViewController.swift in Sources */,
 				45B1BA161E25C451006FFC18 /* MBProgressHUD.m in Sources */,
 				2C19E2441E2AFCF9006CA98B /* CategoryDetailViewController.swift in Sources */,
-				A87513901E2AE39F00D9B194 /* CategoryCell.swift in Sources */,
 				4569B8121E208F20008BD545 /* AppDelegate.swift in Sources */,
 				456EEC521E27353400BE7250 /* Genre.swift in Sources */,
 				4569B8371E209851008BD545 /* SWRevealViewController.m in Sources */,
@@ -588,8 +619,11 @@
 				45CD93301E21844E00B0C8E5 /* CustomButtonOrView.swift in Sources */,
 				4563077A1E2B2BF200214B1B /* RecentStory.swift in Sources */,
 				456307871E2B45A900214B1B /* RecentTableCell.swift in Sources */,
+				4563078C1E2B727800214B1B /* BookmarkViewController.swift in Sources */,
+				456307931E2B755A00214B1B /* BookmarkTableCell.swift in Sources */,
 				4563077E1E2B3DB400214B1B /* RecentViewController.swift in Sources */,
 				456307771E2AEF1800214B1B /* FavoriteCollectionCell.swift in Sources */,
+				4563078F1E2B746A00214B1B /* BookmarkStory.swift in Sources */,
 				4580B2661E237CDB00E2E476 /* DetailStoryViewController.swift in Sources */,
 				A87513871E2AD8FF00D9B194 /* CategoryViewController.swift in Sources */,
 				45CD93051E2152F200B0C8E5 /* MenuViewController.swift in Sources */,
