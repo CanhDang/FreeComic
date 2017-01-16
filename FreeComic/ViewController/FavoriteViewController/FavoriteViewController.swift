@@ -80,7 +80,7 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
         for item in fvStory.genre {
             genre.append(item.id)
         }
-        let story = Story(id: fvStory.id, name: fvStory.name, genre: genre, author: fvStory.author, thumbUrl: fvStory.thumbUrl, numberOfChap: fvStory.thumbUrl, rank: fvStory.rank)
+        let story = Story(id: fvStory.id, name: fvStory.name, genre: genre, author: fvStory.author, thumbUrl: fvStory.thumbUrl, numberOfChap: fvStory.numberOfChap, rank: fvStory.rank)
         
         let detailStoryVC = DetailStoryViewController()
         detailStoryVC.story = story

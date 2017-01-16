@@ -31,7 +31,7 @@ class BookmarkViewController: UIViewController {
         
         bookmarkTableView.register(nib, forCellReuseIdentifier: Constant.BookmarkVC.Identifier.tableViewCell)
         
-        bookmarkTableView.tableFooterView = nil
+        bookmarkTableView.tableFooterView = UIView()
         
     }
     

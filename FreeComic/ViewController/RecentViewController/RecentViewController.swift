@@ -30,7 +30,7 @@ class RecentViewController: UIViewController {
         let nib = UINib(nibName: Constant.RecentVC.NibName.tableViewCell, bundle: nil)
         recentTableView.register(nib, forCellReuseIdentifier: Constant.RecentVC.Identifier.tableViewCell)
         
-        self.recentTableView.tableFooterView = nil
+        self.recentTableView.tableFooterView = UIView()
         
     }
     
