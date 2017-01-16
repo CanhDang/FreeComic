@@ -12,6 +12,7 @@ import RealmSwift
 class BookmarkViewController: UIViewController {
 
     @IBOutlet weak var bookmarkTableView: UITableView!
+    @IBOutlet weak var labelInitial: UILabel!
     
     var bookmarkStories = [BookmarkStory]()
     
@@ -29,10 +30,14 @@ class BookmarkViewController: UIViewController {
         let nib = UINib(nibName: Constant.BookmarkVC.NibName.tableViewCell, bundle: nil)
         
         bookmarkTableView.register(nib, forCellReuseIdentifier: Constant.BookmarkVC.Identifier.tableViewCell)
-
+        
+        bookmarkTableView.tableFooterView = nil
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        labelInitial.isHidden = false
+        bookmarkTableView.isHidden = true
         requestData()
     }
     
@@ -46,7 +51,10 @@ class BookmarkViewController: UIViewController {
         for object in objects {
             bookmarkStories.append(object)
         }
-        
+        if bookmarkStories.count > 0 {
+            self.bookmarkTableView.isHidden = false
+            self.labelInitial.isHidden = true
+        }
         self.bookmarkTableView.reloadData()
     }
     
@@ -90,11 +98,13 @@ extension BookmarkViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         let story = Story(id: bkStory.id, name: bkStory.name, genre: genre, author: bkStory.author, thumbUrl: bkStory.thumbUrl, numberOfChap: bkStory.numberOfChap, rank: bkStory.rank)
-        
+        if bkStory.dataImage != nil {
+            story.image = UIImage(data: bkStory.dataImage as! Data)
+        }
         let readStoryVC = ReadStoryViewController()
         readStoryVC.story = story
         readStoryVC.chapter = Chapter(name: bkStory.chapterName, id: bkStory.chapterId)
-        readStoryVC.pageToScroll = bkStory.pageNumber
+        readStoryVC.pageToScroll = bkStory.pageNumber - 1
         self.navigationController?.pushViewController(readStoryVC, animated: true)
     }
     

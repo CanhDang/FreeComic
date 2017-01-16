@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "ReadStoryViewController.collectionView(UICollectionView, didEndDisplaying : UICollectionViewCell, forItemAt : IndexPath) -&gt; ():ReadStoryViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "indexPath.item">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "DetailStoryViewController.setupHeaderView() -&gt; ():DetailStoryViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -17,10 +25,32 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "HomeViewController.(viewDidLoad() -&gt; ()).(closure #1):HomeViewController.swift">
+         contextName = "ReadStoryViewController.scrollViewWillEndDragging(UIScrollView, withVelocity : CGPoint, targetContentOffset : UnsafeMutablePointer&lt;CGPoint&gt;) -&gt; ():ReadStoryViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.stories">
+               value = "pageNow">
+            </PersistentString>
+            <PersistentString
+               value = "isShowingInitial">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ReadStoryViewController.viewDidAppear(Bool) -&gt; ():ReadStoryViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.pageToScroll">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ReadStoryViewController.saveBookmark(Int) -&gt; ():ReadStoryViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.initialBookmarked ">
+            </PersistentString>
+            <PersistentString
+               value = "self.isBookmarked">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -44,10 +74,26 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "HomeViewController.(viewDidLoad() -&gt; ()).(closure #1):HomeViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.stories">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "DownloadManager.(downloadAllOrTop(stringURL : String, completion : ([Story]) -&gt; ()) -&gt; ()).(closure #1):DownloadManager.swift">
          <PersistentStrings>
             <PersistentString
                value = "url">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ReadStoryViewController.collectionView(UICollectionView, willDisplay : UICollectionViewCell, forItemAt : IndexPath) -&gt; ():ReadStoryViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "indexPath.item">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

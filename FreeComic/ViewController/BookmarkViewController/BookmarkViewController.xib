@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BookmarkViewController" customModule="FreeComic" customModuleProvider="target">
             <connections>
                 <outlet property="bookmarkTableView" destination="KVC-Hd-Z0e" id="a1y-od-QtY"/>
+                <outlet property="labelInitial" destination="D0J-jT-Y8t" id="azf-2z-Lfv"/>
                 <outlet property="view" destination="53H-pG-8I2" id="AyV-Pl-R5C"/>
             </connections>
         </placeholder>
@@ -19,10 +20,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0J-jT-Y8t">
-                    <rect key="frame" x="166.5" y="80" width="42" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO BOOKMARK ADDED " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0J-jT-Y8t">
+                    <rect key="frame" x="93" y="323.5" width="189" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3A3-Vn-FlJ">
@@ -68,11 +69,11 @@
                 <constraint firstAttribute="trailing" secondItem="3A3-Vn-FlJ" secondAttribute="trailing" id="GN1-Co-eOn"/>
                 <constraint firstAttribute="bottom" secondItem="KVC-Hd-Z0e" secondAttribute="bottom" id="WcS-Gg-kzd"/>
                 <constraint firstItem="3A3-Vn-FlJ" firstAttribute="top" secondItem="53H-pG-8I2" secondAttribute="top" id="b4S-rp-2US"/>
+                <constraint firstItem="D0J-jT-Y8t" firstAttribute="centerY" secondItem="53H-pG-8I2" secondAttribute="centerY" id="bNo-8V-vrf"/>
                 <constraint firstItem="3A3-Vn-FlJ" firstAttribute="leading" secondItem="53H-pG-8I2" secondAttribute="leading" id="fIb-TY-nKp"/>
+                <constraint firstItem="D0J-jT-Y8t" firstAttribute="centerX" secondItem="53H-pG-8I2" secondAttribute="centerX" id="gNI-HJ-MAl"/>
                 <constraint firstItem="KVC-Hd-Z0e" firstAttribute="leading" secondItem="53H-pG-8I2" secondAttribute="leading" id="hTA-lP-elV"/>
                 <constraint firstItem="KVC-Hd-Z0e" firstAttribute="top" secondItem="3A3-Vn-FlJ" secondAttribute="bottom" id="lzF-IU-F7y"/>
-                <constraint firstItem="D0J-jT-Y8t" firstAttribute="top" secondItem="3A3-Vn-FlJ" secondAttribute="bottom" constant="20" id="m5Q-Zk-Py0"/>
-                <constraint firstItem="D0J-jT-Y8t" firstAttribute="centerX" secondItem="53H-pG-8I2" secondAttribute="centerX" id="xc4-OR-ha1"/>
             </constraints>
         </view>
     </objects>

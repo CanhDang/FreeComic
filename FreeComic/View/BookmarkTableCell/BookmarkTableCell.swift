@@ -39,7 +39,7 @@ class BookmarkTableCell: UITableViewCell {
         
         self.labelName.text = bookmarkStory.name
         self.labelAuthor.text = "Chapter: " + bookmarkStory.chapterName
-        self.labelNumberChapter.text = "Page: \(bookmarkStory.pageNumber+1)"
+        self.labelNumberChapter.text = "Page: \(bookmarkStory.pageNumber)"
         
     }
     

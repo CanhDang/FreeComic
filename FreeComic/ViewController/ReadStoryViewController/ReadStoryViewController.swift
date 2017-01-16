@@ -38,6 +38,8 @@ class ReadStoryViewController: UIViewController {
     var story: Story!
     var pageToScroll: Int!
     
+    var isShowingInitial: Bool = true
+    
     var isBookmarked: Bool = false
     var initialBookmarked: Bool = false
     
@@ -71,7 +73,7 @@ class ReadStoryViewController: UIViewController {
     }
     
     @IBAction func actionBack(_ sender: Any) {
-        self.saveBookmark(pageNow)
+        self.saveBookmark(pageNow + 1)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -83,6 +85,12 @@ class ReadStoryViewController: UIViewController {
         if self.pageToScroll != nil {
             let indexPath = IndexPath(item: self.pageToScroll, section: 0)
             self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            self.initialBookmarked = true
+            self.isBookmarked = true
+            self.buttonBookmark.setImage(#imageLiteral(resourceName: "bookmarked"), for: .normal)
+            self.isShowingInitial = false
+            self.pageNow = self.pageToScroll
+            self.labelPageNumber.text = "\(pageNow + 1) - \(self.listImage.count)"
         }
     }
     
@@ -221,9 +229,15 @@ class ReadStoryViewController: UIViewController {
 
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
+        self.saveBookmark(pageNow + 1)
+        
         let pageNumber = Int(targetContentOffset.pointee.x / view.frame.width)
         pageNow = pageNumber
         self.labelPageNumber.text = "\(pageNumber + 1) - \(self.listImage.count)"
+        
+        if isShowingInitial == false {
+            self.checkInitialBookmark(pageNow + 1)
+        }
     }
     
     //SAVE IMAGE TO LIBRARY
@@ -311,7 +325,7 @@ class ReadStoryViewController: UIViewController {
                 bookmarkStory.dataImage = data as NSData
             }
             
-            bookmarkStory.pageNumber = pageNow
+            bookmarkStory.pageNumber = pageCheck
             
             do {
                 try realm.write {
@@ -350,15 +364,18 @@ extension ReadStoryViewController: UICollectionViewDelegate {
         let url = URL(string: listImage[indexPath.item].link)
         (cell as! ReadStoryCell).imageView.kf.setImage(with: url)
         
-        self.checkInitialBookmark(indexPath.item)
+        isShowingInitial = false
     }
+    
+    
     
     // end 
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         (cell as! ReadStoryCell).imageView.kf.cancelDownloadTask()
-        
-        self.saveBookmark(indexPath.item)
+
     }
+    
+    
 }
 
 extension ReadStoryViewController: UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {

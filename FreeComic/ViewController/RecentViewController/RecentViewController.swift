@@ -36,6 +36,7 @@ class RecentViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.labelInitial.text = "NO RECENT ADDED"
+        self.labelInitial.isHidden = false
         self.recentTableView.isHidden = true
         
         requestData()
