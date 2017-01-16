@@ -91,6 +91,8 @@ class ReadStoryViewController: UIViewController {
             self.isShowingInitial = false
             self.pageNow = self.pageToScroll
             self.labelPageNumber.text = "\(pageNow + 1) - \(self.listImage.count)"
+        } else {
+            self.checkInitialBookmark(pageNow + 1)
         }
     }
     

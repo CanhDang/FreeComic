@@ -13,7 +13,6 @@ class FavoriteViewController: UIViewController {
 
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
   
     var favoriteStories = [FavoriteStory]()
     
@@ -30,6 +29,7 @@ class FavoriteViewController: UIViewController {
             self.view.addGestureRecognizer(revealViewController().panGestureRecognizer())
             self.view.addGestureRecognizer(revealViewController().tapGestureRecognizer())
         }
+        
         
     }
     
@@ -48,6 +48,7 @@ class FavoriteViewController: UIViewController {
         }
         self.collectionView.reloadData()
     }
+    
 
     @IBAction func actionOpenMenu(_ sender: Any) {
         if revealViewController() != nil {
