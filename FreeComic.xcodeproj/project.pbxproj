@@ -42,6 +42,7 @@
 		456EEC541E27358300BE7250 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456EEC531E27358300BE7250 /* Chapter.swift */; };
 		456EEC5C1E276C5C00BE7250 /* ReadStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456EEC5A1E276C5C00BE7250 /* ReadStoryViewController.swift */; };
 		456EEC5D1E276C5C00BE7250 /* ReadStoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 456EEC5B1E276C5C00BE7250 /* ReadStoryViewController.xib */; };
+		4570B6BD1E5C382A00790AAD /* CacheStories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4570B6BC1E5C382A00790AAD /* CacheStories.swift */; };
 		457B598B1E515FA7006A14F7 /* OfflineDetailStoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B59891E515FA7006A14F7 /* OfflineDetailStoryVC.swift */; };
 		457B598C1E515FA7006A14F7 /* OfflineDetailStoryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 457B598A1E515FA7006A14F7 /* OfflineDetailStoryVC.xib */; };
 		457C7BA21E52F49100016F72 /* ReadOfflineStoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457C7BA01E52F49100016F72 /* ReadOfflineStoryVC.swift */; };
@@ -111,6 +112,7 @@
 		456EEC531E27358300BE7250 /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		456EEC5A1E276C5C00BE7250 /* ReadStoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadStoryViewController.swift; sourceTree = "<group>"; };
 		456EEC5B1E276C5C00BE7250 /* ReadStoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadStoryViewController.xib; sourceTree = "<group>"; };
+		4570B6BC1E5C382A00790AAD /* CacheStories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheStories.swift; sourceTree = "<group>"; };
 		457B59891E515FA7006A14F7 /* OfflineDetailStoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineDetailStoryVC.swift; sourceTree = "<group>"; };
 		457B598A1E515FA7006A14F7 /* OfflineDetailStoryVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OfflineDetailStoryVC.xib; sourceTree = "<group>"; };
 		457C7BA01E52F49100016F72 /* ReadOfflineStoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadOfflineStoryVC.swift; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				4565518B1E2801BD00B58E0E /* Image.swift */,
+				4570B6BC1E5C382A00790AAD /* CacheStories.swift */,
 				4580B25E1E23405F00E2E476 /* Story.swift */,
 				456EEC4F1E27351D00BE7250 /* DetailStory.swift */,
 				456EEC511E27353400BE7250 /* Genre.swift */,
@@ -655,6 +658,7 @@
 				45CD932D1E21835700B0C8E5 /* BaseViewController.swift in Sources */,
 				45CD93021E21526900B0C8E5 /* iCarousel.m in Sources */,
 				4580B25C1E23390200E2E476 /* HomeTableViewCell.swift in Sources */,
+				4570B6BD1E5C382A00790AAD /* CacheStories.swift in Sources */,
 				456848181E277EE100887F7F /* ReadStoryCell.swift in Sources */,
 				4565518C1E2801BD00B58E0E /* Image.swift in Sources */,
 				456EEC5C1E276C5C00BE7250 /* ReadStoryViewController.swift in Sources */,

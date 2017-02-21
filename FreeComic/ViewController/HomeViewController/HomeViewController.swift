@@ -36,10 +36,15 @@ class HomeViewController: UIViewController {
         return refreshControl
     }()
     
+    var cache: NSCache<NSString, CacheStories>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        //Create Cache
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.cache = appDelegate.cache
+
         // Add pan gesture open menu
         if revealViewController() != nil {
             view.addGestureRecognizer(revealViewController().panGestureRecognizer())
@@ -86,6 +91,10 @@ class HomeViewController: UIViewController {
                         a.name < b.name
                     })
                     self.stories = self.allStories
+                    
+                    let cacheStories = CacheStories(stories: self.allStories)
+                    self.cache.setObject(cacheStories, forKey: self.link as NSString)
+                    
                     DispatchQueue.main.async {
                         self.homeTableView.reloadData()
                         refreshControl.endRefreshing()
@@ -98,6 +107,10 @@ class HomeViewController: UIViewController {
                         a.name < b.name
                     })
                     self.stories = self.allStories
+                    
+                    let cacheStories = CacheStories(stories: self.allStories)
+                    self.cache.setObject(cacheStories, forKey: self.link as NSString)
+                    
                     DispatchQueue.main.async {
                         self.homeTableView.reloadData()
                         refreshControl.endRefreshing()
@@ -117,49 +130,73 @@ class HomeViewController: UIViewController {
     
     func requestData(_ link: String) {
         
-        let reachability = Reachability()
         
-        reachability?.whenReachable = { reachability in
+        
+        if let cachedVersion = cache.object(forKey: link as NSString) {
             
-            DispatchQueue.main.async {
-                let loading = MBProgressHUD.showAdded(to: self.view, animated: true)
-                loading.mode = .indeterminate
-                loading.label.text = "Loading"
-            }
+            self.allStories = cachedVersion.stories
+            self.stories = self.allStories
+            self.homeTableView.reloadData()
             
-            if link == Constant.Request.requestNew {
+        } else {
+            
+            let reachability = Reachability()
+            
+            reachability?.whenReachable = { reachability in
                 
-                DownloadManager.share.downloadNew(stringURL: link, completion: { (newStories) in
-                    self.allStories = newStories.sorted(by: { (a, b) -> Bool in
-                        a.name < b.name
-                    })
-                    self.stories = self.allStories
-                    DispatchQueue.main.async {
-                        MBProgressHUD.hide(for: self.view, animated: true)
-                        self.homeTableView.reloadData()
-                    }
-                })
+                DispatchQueue.main.async {
+                    let loading = MBProgressHUD.showAdded(to: self.view, animated: true)
+                    loading.mode = .indeterminate
+                    loading.label.text = "Loading"
+                }
                 
-            } else {
-                DownloadManager.share.downloadAllOrTop(stringURL: link) { (allStories) in
-                    self.allStories = allStories.sorted(by: { (a, b) -> Bool in
-                        a.name < b.name
+                if link == Constant.Request.requestNew {
+                    
+                    DownloadManager.share.downloadNew(stringURL: link, completion: { (newStories) in
+                        self.allStories = newStories.sorted(by: { (a, b) -> Bool in
+                            a.name < b.name
+                        })
+                        self.stories = self.allStories
+                        
+                        let cacheStories = CacheStories(stories: self.allStories)
+                        self.cache.setObject(cacheStories, forKey: link as NSString)
+                        
+                        DispatchQueue.main.async {
+                            MBProgressHUD.hide(for: self.view, animated: true)
+                            self.homeTableView.reloadData()
+                        }
                     })
-                    self.stories = self.allStories
-                    DispatchQueue.main.async {
-                        MBProgressHUD.hide(for: self.view, animated: true)
-                        self.homeTableView.reloadData()
+                    
+                } else {
+                    DownloadManager.share.downloadAllOrTop(stringURL: link) { (allStories) in
+                        self.allStories = allStories.sorted(by: { (a, b) -> Bool in
+                            a.name < b.name
+                        })
+                        self.stories = self.allStories
+                        
+                        let cacheStories = CacheStories(stories: self.allStories)
+                        self.cache.setObject(cacheStories, forKey: link as NSString)
+                        
+                        DispatchQueue.main.async {
+                            MBProgressHUD.hide(for: self.view, animated: true)
+                            self.homeTableView.reloadData()
+                        }
                     }
                 }
             }
-        }
-        
-        reachability?.whenUnreachable = { reachability in
-            self.showAlert(title: Constant.HomeVC.String.Alert, message: Constant.HomeVC.String.NoInternetConnection)
+            
+            reachability?.whenUnreachable = { reachability in
+                self.showAlert(title: Constant.HomeVC.String.Alert, message: Constant.HomeVC.String.NoInternetConnection)
+                
+            }
+            
+            try! reachability?.startNotifier()
+            
             
         }
         
-        try! reachability?.startNotifier()
+        
+        
     }
     
     
