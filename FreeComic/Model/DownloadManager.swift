@@ -11,6 +11,7 @@ import Alamofire
 import Kingfisher
 import ReachabilitySwift
 import SwiftyJSON
+import RealmSwift
 
 class DownloadManager {
     static let share = DownloadManager()
@@ -207,6 +208,136 @@ class DownloadManager {
                 completion(listImage)
             }
             completion(nil)
+        }
+
+    }
+    
+    func downloadOfflineChapter(stringURL: String, completion: @escaping(_ listDataImage: [ImageData]?) -> Void) {
+        guard let url = URL(string: stringURL) else {
+            return
+        }
+        
+        var listImage = [ImageData]()
+        
+        Alamofire.request(url).responseJSON { (response) in
+            if let value = response.result.value {
+                let json = JSON(value)
+                
+                let chapter = json["chapter"]
+                
+                guard let page = chapter["page"].array else { return }
+                
+                var count = 0
+                
+                for item in page {
+                    //guard let number = item["n"].int else { continue }
+                    guard let link = item["u"].string else { continue }
+                    
+                    let linkUrl = URL(string: link)
+                    print(linkUrl!)
+                    
+                    ImageDownloader.default.downloadImage(with: linkUrl!, options: [], progressBlock: nil, completionHandler: { (image, error, url, data) in
+                        
+                        if image != nil {
+                            
+                            let imageData = ImageData()
+                            
+                            imageData.dataImage = UIImagePNGRepresentation(image!)! as NSData?
+                            
+                            listImage.append(imageData)
+                        }
+                        
+                        count += 1
+                        if count == page.count {
+                            completion(listImage)
+                        }
+ 
+                    })
+
+                }
+
+            }
+            completion(nil)
+        }
+        
+    }
+    
+    func downloadOfflineStory(story: Story, chapter: Chapter, detailStory: DetailStory) {
+        
+        let realm = try! Realm()
+        
+        let objects = realm.objects(OfflineStory.self)
+        
+        var check = false
+        for object in objects {
+            if object.id == story.id {
+                check = true
+                let link = String(format: Constant.Request.requestChapter, chapter.id)
+                
+                DownloadManager.share.downloadOfflineChapter(stringURL: link, completion: { (listImageData) in
+                    if listImageData != nil {
+                        let offlineChapter = OfflineChapter()
+                        offlineChapter.chapterId = chapter.id
+                        offlineChapter.chapterName = chapter.name
+                        for imageData in listImageData! {
+                            offlineChapter.images.append(imageData)
+                        }
+                        try! realm.write {
+                            object.chapters.append(offlineChapter)
+                        }
+                        
+                    }
+                })
+                
+                break
+            }
+        }
+        
+        if check == false {
+            let offlineStory = OfflineStory()
+            
+            offlineStory.id = story.id
+            offlineStory.name = story.name
+            offlineStory.author = story.author
+            offlineStory.thumbUrl = story.thumbUrl
+            offlineStory.numberOfChap = story.numberOfChap
+            offlineStory.rank = story.rank
+            offlineStory.summary = detailStory.summary
+            
+            if let data = UIImagePNGRepresentation(story.image!) {
+                offlineStory.dataThumb = data as NSData
+            }
+            
+            for item in story.genre {
+                let offlineGenre = RealmGenre()
+                offlineGenre.id = item
+                offlineStory.genres.append(offlineGenre)
+            }
+            
+            try! realm.write {
+                realm.add(offlineStory)
+            }
+            
+            let link = String(format: Constant.Request.requestChapter, chapter.id)
+            
+            DownloadManager.share.downloadOfflineChapter(stringURL: link, completion: { (listImageData) in
+                if listImageData != nil {
+                    let offlineChapter = OfflineChapter()
+                    offlineChapter.chapterId = chapter.id
+                    offlineChapter.chapterName = chapter.name
+                    for imageData in listImageData! {
+                        offlineChapter.images.append(imageData)
+                    }
+                    
+                    do {
+                        try realm.write {
+                            offlineStory.chapters.append(offlineChapter)
+                        }
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
+            })
         }
 
     }

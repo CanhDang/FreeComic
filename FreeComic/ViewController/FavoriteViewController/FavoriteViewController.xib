@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavoriteViewController" customModule="FreeComic" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="UzD-Ke-hpr" id="txA-sf-YK9"/>
+                <outlet property="labelInitial" destination="eHR-GB-CQW" id="Wpy-dY-JSz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,6 +20,12 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO FAVORITE ADDED " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHR-GB-CQW">
+                    <rect key="frame" x="74" y="273" width="172" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cay-wY-9Zv">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                     <subviews>
@@ -65,7 +72,9 @@
                 <constraint firstItem="UzD-Ke-hpr" firstAttribute="top" secondItem="cay-wY-9Zv" secondAttribute="bottom" id="07F-hC-WwN"/>
                 <constraint firstAttribute="bottom" secondItem="UzD-Ke-hpr" secondAttribute="bottom" id="Dah-Kz-AeY"/>
                 <constraint firstItem="cay-wY-9Zv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="H9X-oD-vb4"/>
+                <constraint firstItem="eHR-GB-CQW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="WMZ-tz-B9N"/>
                 <constraint firstItem="UzD-Ke-hpr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fog-Tb-WNV"/>
+                <constraint firstItem="eHR-GB-CQW" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="k4u-JE-Kv0"/>
                 <constraint firstItem="cay-wY-9Zv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kFB-cd-3ke"/>
                 <constraint firstAttribute="trailing" secondItem="UzD-Ke-hpr" secondAttribute="trailing" id="ko3-8F-Ygz"/>
                 <constraint firstAttribute="trailing" secondItem="cay-wY-9Zv" secondAttribute="trailing" id="mbx-zb-eMP"/>

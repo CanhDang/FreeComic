@@ -13,6 +13,9 @@ class FavoriteViewController: UIViewController {
 
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    
+    @IBOutlet weak var labelInitial: UILabel!
   
     var favoriteStories = [FavoriteStory]()
     
@@ -34,6 +37,8 @@ class FavoriteViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.labelInitial.isHidden = false
+        self.collectionView.isHidden = true
         requestData()
     }
     
@@ -46,6 +51,12 @@ class FavoriteViewController: UIViewController {
         for object in objects {
             favoriteStories.append(object)
         }
+        
+        if favoriteStories.count > 0 {
+            self.labelInitial.isHidden = true
+            self.collectionView.isHidden = false 
+        }
+        
         self.collectionView.reloadData()
     }
     

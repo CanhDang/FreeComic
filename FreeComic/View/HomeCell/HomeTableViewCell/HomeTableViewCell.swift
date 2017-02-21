@@ -42,4 +42,17 @@ class HomeTableViewCell: UITableViewCell {
         self.labelNumberChapter.text = story.numberOfChap + " chapters"
     }
     
+    func configureOffline(offlineStory: OfflineStory) {
+        
+        if offlineStory.dataThumb != nil {
+            if let image = UIImage(data: offlineStory.dataThumb as! Data) {
+                thumbnail.image = image
+            }            
+        }
+        
+        self.labelName.text = offlineStory.name.uppercased()
+        self.labelAuthor.text = offlineStory.author
+        self.labelNumberChapter.text = String(offlineStory.chapters.count) + " / " + offlineStory.numberOfChap + " chapters"
+    }
+    
 }

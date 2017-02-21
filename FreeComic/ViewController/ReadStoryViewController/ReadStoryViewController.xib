@@ -10,13 +10,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReadStoryViewController" customModule="FreeComic" customModuleProvider="target">
             <connections>
+                <outlet property="botBarHeightConstraint" destination="ACn-nE-OXh" id="nuz-Me-R20"/>
                 <outlet property="bottomBar" destination="cod-fm-zui" id="8av-nC-6wj"/>
                 <outlet property="buttonBack" destination="hgY-pN-Het" id="3Bg-L5-aES"/>
                 <outlet property="buttonBookmark" destination="LIM-gO-k4h" id="njS-vv-spU"/>
+                <outlet property="buttonDownload" destination="5D9-0v-x0Z" id="dhS-1S-7mN"/>
                 <outlet property="collectionView" destination="KX5-xn-0oj" id="cGI-yu-mfj"/>
                 <outlet property="labelPageNumber" destination="MNK-u5-WOv" id="owz-Jw-9M7"/>
                 <outlet property="labelTitle" destination="Bnd-wq-Vz7" id="1gk-1n-78G"/>
                 <outlet property="layoutCollectionView" destination="te4-8n-vON" id="IGl-Fu-F2W"/>
+                <outlet property="topBarHeightConstraint" destination="vFb-Ly-OPi" id="ADq-eU-UUa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewBar" destination="rOv-I8-sMz" id="vfn-Bz-Cps"/>
             </connections>
@@ -70,6 +73,9 @@
                                 <constraint firstAttribute="height" constant="30" id="2bQ-6X-k6L"/>
                             </constraints>
                             <state key="normal" title="down" image="download"/>
+                            <connections>
+                                <action selector="actionDownload:" destination="-1" eventType="touchUpInside" id="iLI-W9-aOV"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNK-u5-WOv">
                             <rect key="frame" x="210" y="21.666666666666629" width="174" height="17"/>

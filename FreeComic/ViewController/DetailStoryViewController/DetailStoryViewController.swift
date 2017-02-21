@@ -79,7 +79,7 @@ class DetailStoryViewController: UIViewController {
         
         requestLink(Constant.Request.requestDetailStory)
         
-        //MARK: SWIPE GESTURE
+        // SWIPE GESTURE
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(swipeRight)
@@ -346,6 +346,7 @@ extension DetailStoryViewController: UITableViewDelegate, UITableViewDataSource 
         }
         readStoryVC.chapter = self.chapters[indexPath.row]
         readStoryVC.story = self.story
+        readStoryVC.detailStory = self.detailStory
         
         self.navigationController?.pushViewController(readStoryVC, animated: true)
     }

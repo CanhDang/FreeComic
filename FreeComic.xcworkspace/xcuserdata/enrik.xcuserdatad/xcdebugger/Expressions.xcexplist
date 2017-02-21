@@ -3,14 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "ReadStoryViewController.collectionView(UICollectionView, didEndDisplaying : UICollectionViewCell, forItemAt : IndexPath) -&gt; ():ReadStoryViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "indexPath.item">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "DetailStoryViewController.setupHeaderView() -&gt; ():DetailStoryViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -32,25 +24,6 @@
             </PersistentString>
             <PersistentString
                value = "isShowingInitial">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ReadStoryViewController.viewDidAppear(Bool) -&gt; ():ReadStoryViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.pageToScroll">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ReadStoryViewController.saveBookmark(Int) -&gt; ():ReadStoryViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.initialBookmarked ">
-            </PersistentString>
-            <PersistentString
-               value = "self.isBookmarked">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -82,10 +55,21 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "DownloadManager.(downloadAllOrTop(stringURL : String, completion : ([Story]) -&gt; ()) -&gt; ()).(closure #1):DownloadManager.swift">
+         contextName = "ReadStoryViewController.viewDidAppear(Bool) -&gt; ():ReadStoryViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "url">
+               value = "self.pageToScroll">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DownloadManager.downloadOfflineStory(story : Story, chapter : Chapter, detailStory : DetailStory) -&gt; ():DownloadManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "story.id">
+            </PersistentString>
+            <PersistentString
+               value = "object">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -94,6 +78,41 @@
          <PersistentStrings>
             <PersistentString
                value = "indexPath.item">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DownloadManager.(downloadAllOrTop(stringURL : String, completion : ([Story]) -&gt; ()) -&gt; ()).(closure #1):DownloadManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "url">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ReadStoryViewController.collectionView(UICollectionView, didEndDisplaying : UICollectionViewCell, forItemAt : IndexPath) -&gt; ():ReadStoryViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "indexPath.item">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ReadStoryViewController.checkDownload() -&gt; ():ReadStoryViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.story">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ReadStoryViewController.saveBookmark(Int) -&gt; ():ReadStoryViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.initialBookmarked ">
+            </PersistentString>
+            <PersistentString
+               value = "self.isBookmarked">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

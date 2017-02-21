@@ -28,6 +28,12 @@ class ReadStoryViewController: UIViewController {
     
     @IBOutlet weak var buttonBookmark: UIButton!
     
+    @IBOutlet weak var buttonDownload: UIButton!
+    
+    @IBOutlet weak var topBarHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var botBarHeightConstraint: NSLayoutConstraint!
+    
     
     var tapGesture: UITapGestureRecognizer!
     
@@ -36,6 +42,7 @@ class ReadStoryViewController: UIViewController {
     var pageNow = 0
     var chapter: Chapter!
     var story: Story!
+    var detailStory: DetailStory! 
     var pageToScroll: Int!
     
     var isShowingInitial: Bool = true
@@ -45,8 +52,6 @@ class ReadStoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.requestData()
         
         if #available(iOS 10.0, *) {
             collectionView.prefetchDataSource = self
@@ -70,11 +75,12 @@ class ReadStoryViewController: UIViewController {
         view.addGestureRecognizer(tapGesture)
         
         self.labelTitle.text = self.chapter.name
+        
     }
     
     @IBAction func actionBack(_ sender: Any) {
         self.saveBookmark(pageNow + 1)
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController!.popViewController(animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -82,18 +88,58 @@ class ReadStoryViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if self.pageToScroll != nil {
-            let indexPath = IndexPath(item: self.pageToScroll, section: 0)
-            self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-            self.initialBookmarked = true
-            self.isBookmarked = true
-            self.buttonBookmark.setImage(#imageLiteral(resourceName: "bookmarked"), for: .normal)
-            self.isShowingInitial = false
-            self.pageNow = self.pageToScroll
-            self.labelPageNumber.text = "\(pageNow + 1) - \(self.listImage.count)"
-        } else {
-            self.checkInitialBookmark(pageNow + 1)
+        
+        self.requestData { (check) in
+            if check == true {
+                if self.pageToScroll != nil {
+                    let indexPath = IndexPath(item: self.pageToScroll, section: 0)
+                    self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+                    self.initialBookmarked = true
+                    self.isBookmarked = true
+                    self.buttonBookmark.setImage(#imageLiteral(resourceName: "bookmarked"), for: .normal)
+                    self.isShowingInitial = false
+                    self.pageNow = self.pageToScroll
+                    self.labelPageNumber.text = "\(self.pageNow + 1) - \(self.listImage.count)"
+                } else {
+                    self.checkInitialBookmark(self.pageNow + 1)
+                }
+            }
         }
+        
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.collectionView.transform = CGAffineTransform(scaleX: -1, y: 1)
+        
+        self.checkDownload()
+    }
+    
+    
+    func checkDownload() {
+        let realm = try! Realm()
+        
+        let objects = realm.objects(OfflineStory.self)
+        
+        var isChapterDownloaded = false
+        
+        for object in objects {
+            if object.id == self.story.id {
+                for offlineChapter in object.chapters {
+                    if offlineChapter.chapterId == self.chapter.id {
+                        isChapterDownloaded = true
+                        break
+                    }
+                }
+                break
+            }
+        }
+        
+        if isChapterDownloaded == true {
+            self.buttonDownload.isHidden = true 
+        }
+        
     }
     
     func saveRecentStory() {
@@ -108,8 +154,7 @@ class ReadStoryViewController: UIViewController {
         let realm = try! Realm()
         
         let objects = realm.objects(RecentStory.self)
-        
-        
+
         for object in objects {
             if object.id == self.story.id {
                 try! realm.write {
@@ -156,9 +201,7 @@ class ReadStoryViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.collectionView.transform = CGAffineTransform(scaleX: -1, y: 1)
-    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         layoutCollectionView.itemSize = CGSize(width: view.frame.width, height: view.frame.height)
@@ -173,7 +216,7 @@ class ReadStoryViewController: UIViewController {
         }
     }
     
-    func requestData() {
+    func requestData(completion: @escaping(_ check: Bool) -> Void) {
         
         let link = String(format: Constant.Request.requestChapter, self.chapter.id)
         
@@ -183,6 +226,9 @@ class ReadStoryViewController: UIViewController {
                 self.listImage = images!
                 self.labelPageNumber.text = "\(self.pageNow + 1) - \(self.listImage.count)"
                 self.collectionView.reloadData()
+                completion(true)
+            } else {
+                completion(false)
             }
         }
         
@@ -262,6 +308,15 @@ class ReadStoryViewController: UIViewController {
         let image = cell.imageView.image
         UIImageWriteToSavedPhotosAlbum(image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
+    
+    @IBAction func actionDownload(_ sender: Any) {
+        
+        self.buttonDownload.isHidden = true 
+        
+        DownloadManager.share.downloadOfflineStory(story: self.story, chapter: self.chapter, detailStory: self.detailStory)
+                
+    }
+    
     
     @IBAction func actionBookmark(_ sender: Any) {
 
