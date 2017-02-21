@@ -50,6 +50,10 @@ class ReadStoryViewController: UIViewController {
     var isBookmarked: Bool = false
     var initialBookmarked: Bool = false
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

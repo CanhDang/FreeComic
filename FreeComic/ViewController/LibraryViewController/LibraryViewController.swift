@@ -20,8 +20,17 @@ class LibraryViewController: UIViewController {
     var stories = [OfflineStory]()
     
     let identifier = "LibraryTableViewCell"
+    let stringDelete = "DELETE"
     
-     var tapOutSearchBar: UIGestureRecognizer!
+    var tapOutSearchBar: UIGestureRecognizer!
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        
+        return refreshControl
+    }()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +57,26 @@ class LibraryViewController: UIViewController {
         
         // Request Data
         self.requestData()
+        
+        // Pull to refresh
+        self.libraryTableView.addSubview(self.refreshControl)
+    }
+    
+    // Refresh Table View
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        let realm = try! Realm()
+        
+        let objects = realm.objects(OfflineStory.self)
+        
+        self.allStories = []
+        self.stories = []
+        for object in objects {
+            self.allStories.append(object)
+        }
+        self.stories = self.allStories
+        
+        self.libraryTableView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     @IBAction func actionOpenMenu(_ sender: Any) {
@@ -109,6 +138,25 @@ extension LibraryViewController: UITableViewDataSource, UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if self.searchBar.isFirstResponder == true {
             searchBar.resignFirstResponder()
+        }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let edit = UITableViewRowAction(style: .destructive, title: stringDelete) { (action, indexPath) in
+            
+            self.deleteStory(self.allStories[indexPath.row], indexPath: indexPath)
+            self.requestData()
+            
+        }
+        return [edit]
+    }
+    
+    func deleteStory(_ story: OfflineStory, indexPath: IndexPath) {
+        let realm = try! Realm()
+        
+        try! realm.write {
+            realm.delete(story)
         }
     }
 }

@@ -40,6 +40,10 @@ class ReadOfflineStoryVC: UIViewController {
     var pageNow = 0
     var isTapScreen: Bool = true
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -147,6 +151,8 @@ extension ReadOfflineStoryVC: UICollectionViewDelegate, UICollectionViewDataSour
         let image = UIImage(data: self.listImages[indexPath.row])
         
         cell.imageView.image = image
+        
+        cell.transform = CGAffineTransform(scaleX: -1, y: 1)
         
         return cell
     }
