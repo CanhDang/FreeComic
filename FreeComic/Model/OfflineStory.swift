@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 class ImageData: Object {
+    dynamic var number: Int = 0
     dynamic var dataImage: NSData? = nil
 }
 

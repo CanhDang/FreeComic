@@ -109,9 +109,7 @@ class ReadStoryViewController: UIViewController {
                 }
             }
         }
-        
-        
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -318,6 +316,7 @@ class ReadStoryViewController: UIViewController {
         self.buttonDownload.isHidden = true 
         
         DownloadManager.share.downloadOfflineStory(story: self.story, chapter: self.chapter, detailStory: self.detailStory)
+        
                 
     }
     

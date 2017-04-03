@@ -213,6 +213,7 @@ class DownloadManager {
     }
     
     func downloadOfflineChapter(stringURL: String, completion: @escaping(_ listDataImage: [ImageData]?) -> Void) {
+
         guard let url = URL(string: stringURL) else {
             return
         }
@@ -226,12 +227,13 @@ class DownloadManager {
                 let chapter = json["chapter"]
                 
                 guard let page = chapter["page"].array else { return }
-                
+
                 var count = 0
                 
                 for item in page {
-                    //guard let number = item["n"].int else { continue }
+                   
                     guard let link = item["u"].string else { continue }
+                    guard let number = item["n"].int else { continue }
                     
                     let linkUrl = URL(string: link)
                     print(linkUrl!)
@@ -243,7 +245,7 @@ class DownloadManager {
                             let imageData = ImageData()
                             
                             imageData.dataImage = UIImagePNGRepresentation(image!)! as NSData?
-                            
+                            imageData.number = number 
                             listImage.append(imageData)
                         }
                         
@@ -279,7 +281,12 @@ class DownloadManager {
                         let offlineChapter = OfflineChapter()
                         offlineChapter.chapterId = chapter.id
                         offlineChapter.chapterName = chapter.name
-                        for imageData in listImageData! {
+                        
+                        let sortedList = listImageData?.sorted(by: { (a, b) -> Bool in
+                            a.number < b.number
+                        })
+                        
+                        for imageData in sortedList! {
                             offlineChapter.images.append(imageData)
                         }
                         try! realm.write {
@@ -325,7 +332,12 @@ class DownloadManager {
                     let offlineChapter = OfflineChapter()
                     offlineChapter.chapterId = chapter.id
                     offlineChapter.chapterName = chapter.name
-                    for imageData in listImageData! {
+                    
+                    let sortedList = listImageData?.sorted(by: { (a, b) -> Bool in
+                        a.number < b.number
+                    })
+                    
+                    for imageData in sortedList! {
                         offlineChapter.images.append(imageData)
                     }
                     
