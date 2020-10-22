@@ -1,29 +1,38 @@
 PODS:
-  - Alamofire (4.2.0)
-  - Kingfisher (3.2.1)
-  - ReachabilitySwift (3)
-  - Realm (2.1.0):
-    - Realm/Headers (= 2.1.0)
-  - Realm/Headers (2.1.0)
-  - RealmSwift (2.1.0):
-    - Realm (= 2.1.0)
-  - SwiftyJSON (3.1.3)
+  - Alamofire (4.9.1)
+  - Kingfisher (4.10.1)
+  - ReachabilitySwift (5.0.0)
+  - Realm (10.0.0):
+    - Realm/Headers (= 10.0.0)
+  - Realm/Headers (10.0.0)
+  - RealmSwift (10.0.0):
+    - Realm (= 10.0.0)
+  - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.0)
-  - Kingfisher (~> 3.0)
-  - ReachabilitySwift (~> 3)
+  - Alamofire
+  - Kingfisher
+  - ReachabilitySwift
   - RealmSwift
   - SwiftyJSON
 
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Kingfisher
+    - ReachabilitySwift
+    - Realm
+    - RealmSwift
+    - SwiftyJSON
+
 SPEC CHECKSUMS:
-  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
-  Kingfisher: 64ef28c6d3d6f344e3ae2d7f5c9da80439505d99
-  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
-  Realm: bc829ad0ef3d4eea70c34cfcc3b1704d18d50df1
-  RealmSwift: a4d4abbf0088c337cab5b738054395842e4b3052
-  SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  Realm: 5654b8e5e45034d07b219e089034be2ef7d1e7bf
+  RealmSwift: 5b4c8c85be4c14ff52054a4d80a8d338167dd79c
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 1548d0c8047156b39eaa9c808f8840fa456f626f
+PODFILE CHECKSUM: 8d123be8d01c337bbda288824db32850e429826f
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.9.3

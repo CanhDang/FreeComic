@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ReachabilitySwift
+import Reachability
 import RealmSwift
 
 class DetailStoryViewController: UIViewController {

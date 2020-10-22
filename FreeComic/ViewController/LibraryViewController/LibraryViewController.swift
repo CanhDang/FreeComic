@@ -63,7 +63,7 @@ class LibraryViewController: UIViewController {
     }
     
     // Refresh Table View
-    func handleRefresh(refreshControl: UIRefreshControl) {
+    @objc func handleRefresh(refreshControl: UIRefreshControl) {
         let realm = try! Realm()
         
         let objects = realm.objects(OfflineStory.self)

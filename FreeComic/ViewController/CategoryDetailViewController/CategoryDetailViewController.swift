@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ReachabilitySwift
+import Reachability
 
 class CategoryDetailViewController: UIViewController {
     
