@@ -77,11 +77,11 @@ class ReadOfflineStoryVC: UIViewController {
         self.buttonBack.addTarget(self, action: #selector(actionBack), for: .touchUpInside)
     }
     
-    func actionBack() {
+    @objc func actionBack() {
         self.navigationController!.popViewController(animated: true)
     }
     
-    func tapScreen() {
+    @objc func tapScreen() {
         if self.isTapScreen {
             self.labelPageNumber.isHidden = true
             self.bottomBar.isHidden = true
@@ -117,7 +117,7 @@ class ReadOfflineStoryVC: UIViewController {
     
     //SAVE IMAGE TO LIBRARY 
     
-    func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         if let error = error {
             // we got back an error!
             let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)

@@ -184,7 +184,7 @@ class ReadStoryViewController: UIViewController {
                 recentStory.chapterId = chapter.id
                 recentStory.chapterName = chapter.name
         
-                if let data = UIImagePNGRepresentation(story.image!) {
+        if let data = story.image!.pngData() {
                     recentStory.dataImage = data as NSData
                 }
         
@@ -236,7 +236,7 @@ class ReadStoryViewController: UIViewController {
         
     }
     
-    func tapScreen(){
+    @objc func tapScreen(){
         if isTapScreen {
             labelPageNumber.isHidden = true
             bottomBar.isHidden = true
@@ -291,7 +291,7 @@ class ReadStoryViewController: UIViewController {
     }
     
     //SAVE IMAGE TO LIBRARY
-    func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         if let error = error {
             // we got back an error!
             let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
@@ -381,7 +381,7 @@ class ReadStoryViewController: UIViewController {
             bookmarkStory.chapterId = chapter.id
             bookmarkStory.chapterName = chapter.name
             
-            if let data = UIImagePNGRepresentation(story.image!) {
+            if let data = story.image!.pngData() {
                 bookmarkStory.dataImage = data as NSData
             }
             

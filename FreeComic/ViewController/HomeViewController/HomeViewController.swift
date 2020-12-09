@@ -38,6 +38,8 @@ class HomeViewController: UIViewController {
     
     var cache: NSCache<NSString, CacheStories>!
     
+    let reachability = try! Reachability()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,8 +60,8 @@ class HomeViewController: UIViewController {
         self.homeTableView.dataSource = self
         
         // Segment Control
-        self.segmentedControl.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .normal)
-        self.segmentedControl.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(red:0.00, green:0.48, blue:0.53, alpha:1.0)], for: .selected)
+        self.segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+        self.segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(red:0.00, green:0.48, blue:0.53, alpha:1.0)], for: .selected)
         
         // Setup SearchBar
         searchBar.layer.borderWidth = 1
@@ -75,14 +77,13 @@ class HomeViewController: UIViewController {
         // Pull to refresh
         self.homeTableView.addSubview(self.refreshControl)
         
+         try! reachability.startNotifier()
     }
     
     // Refresh Table View
-    func handleRefresh(refreshControl: UIRefreshControl) {
-        
-        let reachability = Reachability()
-        
-        reachability?.whenReachable = { reachability in
+    @objc func handleRefresh(refreshControl: UIRefreshControl) {
+                
+        reachability.whenReachable = { reachability in
             
             if self.link == Constant.Request.requestNew {
                 
@@ -118,19 +119,16 @@ class HomeViewController: UIViewController {
                 }
             }
         }
-        reachability?.whenUnreachable = { reachability in
+        reachability.whenUnreachable = { reachability in
             self.showAlert(title: Constant.HomeVC.String.Alert, message: Constant.HomeVC.String.NoInternetConnection)
             DispatchQueue.main.async {
                 refreshControl.endRefreshing()
             }
         }
         
-        try! reachability?.startNotifier()
     }
     
     func requestData(_ link: String) {
-        
-        
         
         if let cachedVersion = cache.object(forKey: link as NSString) {
             
@@ -139,10 +137,8 @@ class HomeViewController: UIViewController {
             self.homeTableView.reloadData()
             
         } else {
-            
-            let reachability = Reachability()
-            
-            reachability?.whenReachable = { reachability in
+                    
+            reachability.whenReachable = { reachability in
                 
                 DispatchQueue.main.async {
                     let loading = MBProgressHUD.showAdded(to: self.view, animated: true)
@@ -173,7 +169,7 @@ class HomeViewController: UIViewController {
                             a.name < b.name
                         })
                         self.stories = self.allStories
-                        
+                        print("self.stories.count", self.stories.count)
                         let cacheStories = CacheStories(stories: self.allStories)
                         self.cache.setObject(cacheStories, forKey: link as NSString)
                         
@@ -185,13 +181,10 @@ class HomeViewController: UIViewController {
                 }
             }
             
-            reachability?.whenUnreachable = { reachability in
+            reachability.whenUnreachable = { reachability in
                 self.showAlert(title: Constant.HomeVC.String.Alert, message: Constant.HomeVC.String.NoInternetConnection)
                 
             }
-            
-            try! reachability?.startNotifier()
-            
             
         }
         

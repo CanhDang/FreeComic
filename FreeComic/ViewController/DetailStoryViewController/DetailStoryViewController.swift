@@ -49,6 +49,7 @@ class DetailStoryViewController: UIViewController {
     var isShowingDesciption: Bool = false
     var isFavorited: Bool = false
     
+    let reachability = try! Reachability()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -56,7 +57,7 @@ class DetailStoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        try! reachability.startNotifier()
         realm = try! Realm()
         
         searchBar.delegate = self
@@ -72,7 +73,7 @@ class DetailStoryViewController: UIViewController {
         viewSearch.layer.borderColor = Constant.Color.blueColor.cgColor
         
         addDoneButtonToKeyboard(myAction: #selector(actionSearch))
-        self.textViewDescription.textContainerInset = UIEdgeInsetsMake(10, 10, 10, 10)
+        self.textViewDescription.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
         
         checkFavorite()
@@ -81,21 +82,21 @@ class DetailStoryViewController: UIViewController {
         
         // SWIPE GESTURE
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(swipeRight)
     }
     
-    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
-            case UISwipeGestureRecognizerDirection.right:
+            case UISwipeGestureRecognizer.Direction.right:
                 print("Swiped right")
                 self.navigationController!.popViewController(animated: true)
-            case UISwipeGestureRecognizerDirection.down:
+            case UISwipeGestureRecognizer.Direction.down:
                 print("Swiped down")
-            case UISwipeGestureRecognizerDirection.left:
+            case UISwipeGestureRecognizer.Direction.left:
                 print("Swiped left")
-            case UISwipeGestureRecognizerDirection.up:
+            case UISwipeGestureRecognizer.Direction.up:
                 print("Swiped up")
             default:
                 break
@@ -117,10 +118,8 @@ class DetailStoryViewController: UIViewController {
     }
     
     func requestLink(_ link: String) {
-        
-        let reachability = Reachability()
-        
-        reachability?.whenReachable = { reachability in
+            
+        reachability.whenReachable = { reachability in
         
             DispatchQueue.main.async {
                 let loading = MBProgressHUD.showAdded(to: self.view, animated: true)
@@ -145,12 +144,11 @@ class DetailStoryViewController: UIViewController {
             
         }
         
-        reachability?.whenUnreachable = { reachability in
+        reachability.whenUnreachable = { reachability in
             self.showAlert(title: Constant.HomeVC.String.Alert, message: Constant.HomeVC.String.NoInternetConnection)
             
         }
-        
-        try! reachability?.startNotifier()
+    
     }
     
     func setupDetailView() {
@@ -172,8 +170,8 @@ class DetailStoryViewController: UIViewController {
         doneToolbar.barStyle = UIBarStyle.default
         doneToolbar.barTintColor = UIColor.lightGray
         
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Search", style: UIBarButtonItemStyle.done, target: self, action: myAction)
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Search", style: UIBarButtonItem.Style.done, target: self, action: myAction)
         
         var items = [UIBarButtonItem]()
         items.append(flexSpace)
@@ -185,7 +183,7 @@ class DetailStoryViewController: UIViewController {
         searchBar.inputAccessoryView = doneToolbar
     }
 
-    func actionSearch() {
+    @objc func actionSearch() {
         
         if let searchText = searchBar.text {
             for (index,chapter) in chapters.enumerated() {
@@ -225,7 +223,7 @@ class DetailStoryViewController: UIViewController {
             favoriteStory.thumbUrl = self.story.thumbUrl
             favoriteStory.rank = self.story.rank
             
-            if let data = UIImagePNGRepresentation(imageThumb.image!) {
+            if let data = imageThumb.image!.pngData() {
                 favoriteStory.dataImage = data as NSData
             }
 
@@ -354,7 +352,7 @@ extension DetailStoryViewController: UITableViewDelegate, UITableViewDataSource 
 
 extension DetailStoryViewController: UISearchBarDelegate {
     
-    func endSearchBar() {
+    @objc func endSearchBar() {
         searchBar.resignFirstResponder()
     }
     

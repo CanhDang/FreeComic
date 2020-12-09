@@ -54,7 +54,7 @@ class ReadStoryCell: UICollectionViewCell {
     
     // MARK: xu ly tap
     
-    func doubleTapGesture(_ gesture: UITapGestureRecognizer) {
+    @objc func doubleTapGesture(_ gesture: UITapGestureRecognizer) {
         // zoom in, zoom out 
         if (scrollView.zoomScale >= scrollView.maximumZoomScale/2) {
             scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)

@@ -67,7 +67,7 @@ class OfflineDetailStoryVC: UIViewController {
         addDoneButtonToKeyboard(myAction: #selector(actionSearch))
         
         // Description
-        self.textViewDescription.textContainerInset = UIEdgeInsetsMake(10, 10, 10, 10)
+        self.textViewDescription.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         self.buttonShowDescription.addTarget(self, action: #selector(actionShowDescription), for: .touchUpInside)
         
         // Request Data
@@ -105,8 +105,8 @@ class OfflineDetailStoryVC: UIViewController {
         doneToolbar.barStyle = UIBarStyle.default
         doneToolbar.barTintColor = UIColor.lightGray
         
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Search", style: UIBarButtonItemStyle.done, target: self, action: myAction)
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Search", style: UIBarButtonItem.Style.done, target: self, action: myAction)
         
         var items = [UIBarButtonItem]()
         items.append(flexSpace)
@@ -118,7 +118,7 @@ class OfflineDetailStoryVC: UIViewController {
         searchBar.inputAccessoryView = doneToolbar
     }
 
-    func actionSearch() {
+    @objc func actionSearch() {
         if let searchText = searchBar.text {
             for (index,chapter) in listChapters.enumerated() {
                 if chapter.chapterName.contains(searchText) {
@@ -142,7 +142,7 @@ class OfflineDetailStoryVC: UIViewController {
         self.navigationController!.popViewController(animated: true)
     }
     
-    func actionShowDescription() {
+    @objc func actionShowDescription() {
         
         self.buttonShowDescription.isEnabled = false
         
@@ -203,7 +203,7 @@ extension OfflineDetailStoryVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension OfflineDetailStoryVC: UISearchBarDelegate {
-    func endSearchBar() {
+    @objc func endSearchBar() {
         searchBar.resignFirstResponder()
     }
     

@@ -70,6 +70,7 @@ class DownloadManager {
         guard let url = URL(string: stringURL) else {
             return
         }
+        print("url", url)
         var stories = [Story]()
         
         Alamofire.request(url).responseJSON { (response) in
@@ -244,7 +245,7 @@ class DownloadManager {
                             
                             let imageData = ImageData()
                             
-                            imageData.dataImage = UIImagePNGRepresentation(image!)! as NSData?
+                            imageData.dataImage = image!.pngData()! as NSData?
                             imageData.number = number 
                             listImage.append(imageData)
                         }
@@ -311,7 +312,7 @@ class DownloadManager {
             offlineStory.rank = story.rank
             offlineStory.summary = detailStory.summary
             
-            if let data = UIImagePNGRepresentation(story.image!) {
+            if let data = story.image!.pngData() {
                 offlineStory.dataThumb = data as NSData
             }
             

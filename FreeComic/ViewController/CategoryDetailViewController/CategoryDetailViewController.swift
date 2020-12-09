@@ -29,13 +29,14 @@ class CategoryDetailViewController: UIViewController {
     
     var genreName = String()
     
+    let reachability = try! Reachability()
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         // Add pan gesture open menu
         if revealViewController() != nil {
@@ -60,14 +61,18 @@ class CategoryDetailViewController: UIViewController {
         // Request Data
         self.requestData(Constant.Request.requestAll)
         
+        try! reachability.startNotifier()
+
+    }
+    
+    deinit {
+        reachability.stopNotifier()
     }
     
     
     func requestData(_ link: String) {
         
-        let reachability = Reachability()
-        
-        reachability?.whenReachable = { reachability in
+        reachability.whenReachable = { reachability in
             
             DispatchQueue.main.async {
                 let loading = MBProgressHUD.showAdded(to: self.view, animated: true)
@@ -109,21 +114,20 @@ class CategoryDetailViewController: UIViewController {
             }
         }
         
-        reachability?.whenUnreachable = { reachability in
+        reachability.whenUnreachable = { reachability in
             self.showAlert(title: Constant.HomeVC.String.Alert, message: Constant.HomeVC.String.NoInternetConnection)
             
         }
         
-        try! reachability?.startNotifier()
     }
     
     @IBAction func actionOpenMenu(_ sender: AnyObject) {
         
         self.endSearchBar()
         
-//        if revealViewController() != nil {
-//            revealViewController().revealToggle(self)
-//        }
+        //        if revealViewController() != nil {
+        //            revealViewController().revealToggle(self)
+        //        }
         
         self.navigationController!.popViewController(animated: true)
         
